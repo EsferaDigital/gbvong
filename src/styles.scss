@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+// Configuración
+
+@import "./scss/config/reset";
+@import "./scss/config/capas";
+@import "./scss/config/colores";
+@import "./scss/config/fuentes";
+@import "./scss/config/sombras";
+@import "./scss/config/imagenes";
+@import "./scss/config/breakpoints";
+@import "./scss/config/var-root";
+
+// Textos
+
+@import "./scss/textos/parrafos";
+@import "./scss/textos/otros-textos";
+@import "./scss/textos/titulos";
+
+// secciones (etiquetas html principales)
+
+@import "./scss/secciones/header";
+@import "./scss/secciones/main";
+@import "./scss/secciones/footer";
+@import "./scss/secciones/banner";
+
+// contenedores (contenedores principales)
+
+@import "./scss/contenedores/header-container";
+@import "./scss/contenedores/main-container";
+@import "./scss/contenedores/aside-container";
+@import "./scss/contenedores/footer-container";
+@import "./scss/contenedores/container-central";
+@import "./scss/contenedores/container-grid"; //para meter dentro maś de una card y/o elemento
+
+// Boxes (contenido único centrado absoluto)
+
+@import "./scss/boxes/box-img";
+@import "./scss/boxes/box-text";
+@import "./scss/boxes/box-audio";
+@import "./scss/boxes/box-video";
+@import "./scss/boxes/box-form";
+@import "./scss/boxes/box-slider";
+@import "./scss/boxes/box-creditos";
+@import "./scss/boxes/box-maps";
+@import "./scss/boxes/box-btn";
+
+
+// Cards (tarjetas con contenido unico. Van siempre dentro de un container grid)
+
+@import "./scss/cards/card-img";
+@import "./scss/cards/card-text";
+@import "./scss/cards/card-copy";
+
+// Elementos
+
+@import "./scss/elementos/botones";
+@import "./scss/elementos/iconos";
+@import "./scss/elementos/modal";
+
+
+
+//Animaciones
+
+@import "./scss/animaciones/slide";
