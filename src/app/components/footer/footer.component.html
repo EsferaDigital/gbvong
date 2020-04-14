@@ -1,11 +1,11 @@
 <footer class="Footer">
   <div class="Footer-container">
-    <button class="btn-ToTop" id="ButtonTop">
+    <button class="btn-ToTop" *ngIf="showGoUpButton" (click)="scrollTop()">
       <i class="fas fa-chevron-up"></i>
     </button>
     <div class="Footer-columns">
       <div class="Box-maps">
-        <div class="Mapa" id="Mapa"></div>
+        <div class="Mapa" [innerHTML]="mapa"></div>
       </div>
       <div class="Box-text">
         <div class="Card-text">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="Card-copy">
-      <p class="Small-text">Copyright &#169; <span id="Year"></span>Grupo GBV.</p>
+      <p class="Small-text">Copyright &#169; <span>{{ano}}</span> Grupo GBV.</p>
       <p class="Small-text">
         Todos los derechos reservados.
       </p>

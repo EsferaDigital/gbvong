@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'gb-header',
@@ -6,8 +6,12 @@ import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @ViewChild('btnpanel', {read: ElementRef}) btnpanel: ElementRef;
 
-  constructor(private renderer: Renderer2) { }
+  constructor() { }
+
+  showPanel(boton: any, panel: any){
+    boton.classList.toggle('is-active')
+    panel.classList.toggle('is-active')
+  }
 
 }

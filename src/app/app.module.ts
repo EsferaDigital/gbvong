@@ -5,13 +5,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
+import { ModalformComponent } from './components/modalform/modalform.component';
+import { ModalhistoriaComponent } from './components/modalhistoria/modalhistoria.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent
+    MainComponent,
+    ModalformComponent,
+    ModalhistoriaComponent
   ],
   imports: [
     BrowserModule

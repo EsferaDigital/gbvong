@@ -5,12 +5,12 @@
         <img src="../../../assets/img/logo.png" alt="Logo GBV">
       </a>
     </div>
-    <button type="button" #btnpanel class="Panel-btn hamburger hamburger--elastic">
+    <button type="button" (click)="showPanel(btnPanel, Panel)" #btnPanel class="Panel-btn hamburger hamburger--elastic">
       <span class="hamburger-box">
         <span class="hamburger-inner"></span>
       </span>
     </button>
-    <section class="Panel">
+    <section #Panel class="Panel">
       <nav class="Menu">
         <ul>
           <li>
