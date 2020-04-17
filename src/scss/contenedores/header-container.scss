@@ -138,6 +138,7 @@
     font-size: 1.5rem;
     text-decoration: none;
     color: white;
+    cursor: pointer;
     transition: all .3s ease;
     @include mq(lgs){
       padding: 0 .5rem;

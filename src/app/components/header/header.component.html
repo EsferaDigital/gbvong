@@ -1,7 +1,10 @@
-<header class="Header" id="Header">
+<header class="Header"
+        #Header
+        [class]="anima"
+        [ngStyle]="{'background': colorHeader}">
   <section class="Header-container">
     <div class="Logo">
-      <a routerLink="">
+      <a href="http://localhost:4200/">
         <img src="../../../assets/img/logo.png" alt="Logo GBV">
       </a>
     </div>
@@ -14,16 +17,16 @@
       <nav class="Menu">
         <ul>
           <li>
-            <a routerLink="">Inicio</a>
+            <a href="http://localhost:4200/">Inicio</a>
           </li>
           <li>
-            <a href="#">Quiénes Somos?</a>
+            <a (click)="toGoSection('somos')">Quiénes Somos?</a>
           </li>
           <li>
-            <a href="#">Qué Hacemos?</a>
+            <a (click)="toGoSection('hacemos')">Qué Hacemos?</a>
           </li>
           <li>
-            <a href="#">Súmate</a>
+            <a (click)="toGoSection('sumate')">Súmate</a>
           </li>
         </ul>
       </nav>

@@ -1,4 +1,4 @@
-<section class="ModalH" #modalH>
+<section [ngClass]="animamodal" class="ModalH" #modalH>
   <div class="ModalH-item">
     <div class="Box-text">
       <h2 class="Titulo-2">Nuestra Historia</h2>
@@ -11,5 +11,5 @@
       <p class="Parrafo">En la actualidad el GBV mantiene una directiva, la cual es presidida por Hugo Bustos Alderete, creador y fundador de la ONG además de casi 400 integrantes que ayudan en la organización de forma voluntaria.</p>
     </div>
   </div>
-  <button id="closeModal"><i class="fas fa-times"></i></button>
+  <button (click)="closeModal(modalH)" id="closeModal"><i class="fas fa-times"></i></button>
 </section>

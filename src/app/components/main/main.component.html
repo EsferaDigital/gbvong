@@ -1,5 +1,5 @@
 <main class="Main">
-  <div *ngIf="modal">
+  <div *ngIf="vermodal">
     <gb-modalhistoria *ngIf="mostrarHistoria"></gb-modalhistoria>
     <gb-modalform *ngIf="mostrarForm"></gb-modalform>
   </div>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="Box-btn">
-      <button class="Btn-modal" (click)="modalHistoria()">Saber más</button>
+      <button class="Btn-modal" (click)="modalHistoria(true)">Saber más</button>
     </div>
   </section>
   <section class="Hacemos" id="hacemos">
