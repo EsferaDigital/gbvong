@@ -1,8 +1,6 @@
 <main class="Main">
-  <div *ngIf="vermodal">
-    <gb-modalhistoria *ngIf="mostrarHistoria"></gb-modalhistoria>
-    <gb-modalform *ngIf="mostrarForm"></gb-modalform>
-  </div>
+  <gb-modalhistoria (cerrarhistoria)="ocultarHistoria($event)" *ngIf="verhistoria"></gb-modalhistoria>
+  <gb-modalform *ngIf="verformulario"></gb-modalform>
   <div class="Banner">
     <div class="Container-grid">
       <h1 class="Titulo">Grupo GBV</h1>
@@ -21,7 +19,7 @@
       </div>
     </div>
     <div class="Box-btn">
-      <button class="Btn-modal" (click)="modalHistoria(true)">Saber más</button>
+      <button class="Btn-modal" (click)="mostrarHistoria()">Historia</button>
     </div>
   </section>
   <section class="Hacemos" id="hacemos">
@@ -62,7 +60,7 @@
       <div class="Card-text">
         <h3 class="Titulo-3">Únete</h3>
         <p class="Parrafo">Accede a nuestro formulario de inscripción haciendo click sobre el boton.</p>
-        <button class="Btn-modal">Formulario</button>
+        <button class="Btn-modal" (click)="mostrarFormulario()">Formulario</button>
       </div>
       <div class="Card-text">
         <h3 class="Titulo-3">Síguenos</h3>

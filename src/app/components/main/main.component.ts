@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component} from '@angular/core';
 
 
 @Component({
@@ -6,24 +6,33 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
-  @Input() vermodal: Boolean
-  @Output() animamodal: EventEmitter<string>
-  mostrarHistoria: Boolean
-  mostrarForm: Boolean
+export class MainComponent{
+
+  verhistoria : boolean;
+  verformulario: boolean;
+
 
   // el valor de modal debe ser = al valor de lo que recibamos del modal historia o modal formulario
 
-  constructor() {
-    this.animamodal = new EventEmitter()
+  constructor() { }
+
+
+
+
+  mostrarHistoria(){
+    this.verhistoria = true;
   }
 
-  modalHistoria(ver: boolean){
-    // Muestra o destruye segun el valor de estas variables y usando ngIf
-    this.animamodal.emit('zoom-out')
-    this.vermodal = ver
-    console.log(this.vermodal)
-    this.mostrarHistoria = ver
+  mostrarFormulario(){
+    this.verformulario = true;
+  }
+
+  ocultarFormulario(dato: boolean){
+    this.verformulario = dato;
+  }
+
+  ocultarHistoria(dato: boolean){
+    this.verhistoria = dato;
   }
 
 

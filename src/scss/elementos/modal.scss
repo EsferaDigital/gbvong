@@ -5,7 +5,8 @@
   z-index: capa(capa10);
   width: 100%;
   height: 100vh;
-  background-color: $fondo-transparente;
+  // background-color: $fondo-transparente;
+  background-color: whitesmoke;
   &:before{
     content: "\02715";
     // font-family: FontAwsome;
@@ -25,10 +26,6 @@
     height: 85vh;
     margin: auto;
     background-color: color(bg);
-    & iframe{
-      width: 100%;
-      height: 100%;
-    }
   }
   &.zoom-in{
     animation: zoomIn .5s forwards;

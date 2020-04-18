@@ -1,9 +1,167 @@
 
-<div id="Modal-container" class="Modal">
+<div #modalF id="Modal-container" class="Modal">
   <div id="Modal-content">
-    <table border=0 cellspacing=0 cellpadding=0 class="scroll-iframe">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeZzWHFwBcZmjrFWi9c_AWyAC3NJ1ySYNepbh93VvzDqOVFwg/viewform?embedded=true" width="640" height="1639" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-    </table>
+    <form [formGroup]="forma" (ngSubmit)="guardar()">
+      <div>
+
+        <div class="form-group">
+          <label for="">Nombres</label>
+          <div>
+            <input type="text"
+                   placeholder="Nombres"
+                   formControlName="nombres"
+                   [class.is-invalid]="nombresNoValido">
+            <small *ngIf="nombresNoValido" class="text-danger">
+              Ingrese al menos 5 caracteres
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Apellidos</label>
+          <div>
+            <input type="text"
+                   placeholder="Apellidos"
+                   formControlName="apellidos"
+                   [class.is-invalid]="apellidosNoValido">
+            <small *ngIf="apellidosNoValido" class="text-danger">
+              Ingrese al menos 5 caracteres
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">RUT</label>
+          <div>
+            <input type="number"
+                   placeholder="12.345.678-9"
+                   formControlName="rut">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Numero de documento (para evitar ingreso de datos falsos)</label>
+          <div>
+            <input type="number"
+                   placeholder="100.000.001"
+                   formControlName="docnumber">
+          </div>
+        </div>
+
+        <div class="form-group" formGroupName="direccion">
+          <label for="">Dirección (Región, comuna, calle)</label>
+          <div>
+
+            <div>
+              <input type="text"
+                     placeholder="Región"
+                     formControlName="region"
+                     [class.is-invalid]="regionNoValida">
+              <small *ngIf="regionNoValida" class="text-danger">
+                Seleccione una Region
+              </small>
+            </div>
+
+            <div>
+              <input type="text"
+                     placeholder="Comuna"
+                     formControlName="comuna"
+                     [class.is-invalid]="comunaNoValida">
+                <small *ngIf="comunaNoValida" class="text-danger">
+                  Seleccione una Comuna
+                </small>
+            </div>
+
+            <div>
+              <input type="text"
+                     placeholder="Calle #"
+                     formControlName="calle"
+                     [class.is-invalid]="calleNoValida">
+                <small *ngIf="calleNoValida" class="text-danger">
+                  Escriba una dirección
+                </small>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Número de Teléfono</label>
+          <div>
+            <input type="number" placeholder="+56 9 1234 5678">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Correo electrónico</label>
+          <div>
+            <input type="email"
+                   placeholder="ejemplo@tuweb.com"
+                   formControlName="correo"
+                   [class.is-invalid]="correoNoValido">
+            <small *ngIf="correoNoValido" class="text-danger">
+              Ingrese un correo válido
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Motivo de su ingreso(Me robaron un vehículo, Soy miembro de una institución o rma de las FFAA, Me interesa colaborar como civil)</label>
+          <div>
+            <input type="text" placeholder="Nombres">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <div>
+            <button type="submit">Enviar</button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+    <hr>
+    <pre>
+      Estado del formulario: {{forma.valid}}
+      <br>
+      Status: {{forma.status}}
+    </pre>
+
+        <!-- Esto es sólo para victimas, puedo pornerlo en un form grup aparte (solo dos form group) -->
+        <!-- <h2>Sólo para víctimas</h2>
+        <div class="form-group">
+          <label for="">Ingresa la patente del vehículo robado</label>
+          <div>
+            <input type="text" placeholder="patente">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Más datos que pudieras añadir (marca, color, lugar, contexto del robo</label>
+          <div>
+            <input type="text" placeholder="Poner un text area">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Si encontramos tu vehículo, estarías dispuesto a hacer una donación a nuestra ONG</label>
+          <div>
+            <input type="text" placeholder="si, no, tal vez">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">¿Cuánto podrías donar?</label>
+          <div>
+            <input type="text" placeholder="Nombres">
+          </div>
+        </div> -->
+
+        <!-- esa es toda la informacion que se necesita -->
+
+
   </div>
 </div>
 

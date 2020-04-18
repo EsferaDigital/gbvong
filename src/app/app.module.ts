@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { ModalformComponent } from './components/modalform/modalform.component';
 import { ModalhistoriaComponent } from './components/modalhistoria/modalhistoria.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ModalhistoriaComponent } from './components/modalhistoria/modalhistoria
     ModalhistoriaComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
