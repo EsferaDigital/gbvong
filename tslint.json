@@ -6,7 +6,8 @@
     "no-string-literal": false,
     "semicolon": false,
     "one-line": false,
-    "prefer-const": false
+    "prefer-const": false,
+    "no-trailing-whitespace": [true, "ignore-comments"],
     "deprecation": {
       "severity": "warning"
     },
@@ -20,7 +21,7 @@
       "camelCase"
     ],
     "component-selector": [
-      true,
+      false,
       "element",
       "app",
       "kebab-case"

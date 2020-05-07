@@ -1,0 +1,12 @@
+.Formulario{
+  width: 100%;
+  margin: auto;
+  max-width: 600px;
+  color: color(bg);
+  &-item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 2px solid color(secondary);
+    margin: 1rem 0;
+  }
+}

@@ -100,6 +100,12 @@
   }
 }
 
+.Modal-content{
+  width: 90%;
+  margin: auto;
+  background-color: color(primary);
+}
+
 #closeModal{
   position: absolute;
   top: .7rem;
