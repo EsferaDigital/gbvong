@@ -3,10 +3,38 @@
   margin: auto;
   max-width: 600px;
   color: color(bg);
+  background-color: color(primary);
+  & h3{
+    text-align: center;
+    color: color(bg);
+    background-color: color(secondary);
+    padding: 1rem;
+    letter-spacing: 8px;
+  }
+  & p{
+    font-family: $fuente-secundaria;
+    padding: .5rem;
+    font-size: var(--font-size-small-text);
+    width: 95%;
+    margin: auto;
+  }
+  & label, select, option{
+    width: 100%;
+  }
+  & input, select, option{
+    width: 100%;
+    font-family: $fuente-secundaria;
+    background-color: color(bg-item);
+  }
   &-item{
+    width: 95%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     border: 2px solid color(secondary);
-    margin: 1rem 0;
+    margin: 1rem auto;
+    padding: .5rem;
+    &-identidad{
+      margin: .5rem 0;
+    }
   }
 }

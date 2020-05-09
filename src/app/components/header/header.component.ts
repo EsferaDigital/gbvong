@@ -9,14 +9,13 @@ export class HeaderComponent {
 
   @ViewChild('Header') Header;
 
-  anima : string = 'slide-down';
-  colorHeader : string;
+  anima = 'slide-down';
+  colorHeader: string;
 
-  // header: any = document.getElementById('Header')
 
   constructor() { }
 
-  //Muestra u oculta el panel
+  // Muestra u oculta el panel
   showPanel(boton: any, panel: any){
     boton.classList.toggle('is-active')
     panel.classList.toggle('is-active')
@@ -31,10 +30,10 @@ export class HeaderComponent {
     let st = window.pageXOffset || document.documentElement.scrollTop
 
 
-    if(st > lastScrollTop){
+    if (st > lastScrollTop){
       this.anima = 'slide-up';
       this.colorHeader = '#1F5764'
-    }else if(sctop === 0){
+    }else if (sctop === 0){
       this.anima = 'slide-down'
       this.colorHeader = 'transparent'
     }

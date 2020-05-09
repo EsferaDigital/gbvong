@@ -68,5 +68,5 @@
 .slideright, .slide-right{@include slideRight(1s);}
 .slidetop, .slide-top{@include slideTop(1s);}
 .slidebottom, .slide-bottom{@include slideBottom(1s);}
-.slidedown, .slide-down{@include slideDown(1s,1000px);}
+.slidedown, .slide-down{@include slideDown(3s,1000px);}
 .slideup, .slide-up{@include slideUp(1s, 1000px);}

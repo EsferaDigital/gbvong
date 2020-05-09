@@ -12,8 +12,10 @@ export class ModalformComponent implements OnInit {
 
   forma: FormGroup
   ubicacion: any[] = []
-  // region: any
+  mostrarComuna = false
   comunas: any[]
+  expandirForm = "elemento-oculto"
+  expandirDonacion: boolean
 
   constructor(
     private fb: FormBuilder,
@@ -48,8 +50,8 @@ export class ModalformComponent implements OnInit {
     return this.forma.get('rut').invalid && this.forma.get('rut').touched
   }
 
-  get correoNoValido(){
-    return this.forma.get('correo').invalid && this.forma.get('correo').touched
+  get docnumberNoValido(){
+    return this.forma.get('docnumber').invalid && this.forma.get('docnumber').touched
   }
 
   get regionNoValida(){
@@ -64,6 +66,18 @@ export class ModalformComponent implements OnInit {
     return this.forma.get('direccion.calle').invalid && this.forma.get('direccion.calle').touched
   }
 
+  get telefonoNoValido(){
+    return this.forma.get('telefono').invalid && this.forma.get('telefono').touched
+  }
+
+  get correoNoValido(){
+    return this.forma.get('correo').invalid && this.forma.get('correo').touched
+  }
+
+  get patenteNoValida(){
+    return this.forma.get('patente').invalid && this.forma.get('patente').touched
+  }
+
   // Funcion que crea el formulario y recibe validadores
   crearFormulario(){
     this.forma = this.fb.group({
@@ -76,16 +90,28 @@ export class ModalformComponent implements OnInit {
       rut: ['', [
         Validators.required
       ]],
-      docnumber: [''],
+      docnumber: ['', [
+                   Validators.required
+                  ]],
+      direccion: this.fb.group({
+        region: ['', Validators.required],
+        comunas: ['', Validators.required],
+        calle: ['', Validators.required]
+      }),
+      telefono: ['', [
+                  Validators.required
+                ]],
       correo: ['', [
                 Validators.required,
                 Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
               ]],
-      direccion: this.fb.group({
-        region: ['ubicacion.region', Validators.required],
-        comunas: ['', Validators.required],
-        calle: ['', Validators.required]
-      })
+      motivo: ['Me interesa colaborar como civil', [
+                Validators.required
+              ]],
+      patente: [''],
+      moredata: [''],
+      donacion: ['No'],
+      montodonacion: [''],
     })
   }
 
@@ -95,6 +121,33 @@ export class ModalformComponent implements OnInit {
     // unshift es una funcion nativa que añade un valor al principio de un array
     this.comunas.unshift('Seleccione una comuna')
     console.log(this.comunas)
+    this.mostrarComuna = true;
+  }
+
+  showHideDonacion(v){
+    switch (v){
+      case 'Si':
+        this.expandirDonacion = true
+        break
+      case 'No':
+        this.expandirDonacion = false
+        break
+      case 'Tal vez':
+        this.expandirDonacion = true
+        break
+      default:
+        this.expandirDonacion = false
+    }
+  }
+
+  scrollToElement(elemento: HTMLElement){
+    this.expandirForm = 'elemento-visible'
+
+    setTimeout( () => {
+      elemento.scrollIntoView({behavior: 'smooth'})
+    }, 500);
+
+    // elemento.scrollIntoView({behavior: 'smooth'})
   }
 
   // Evento que guarda la info en base de datos

@@ -5,6 +5,9 @@
           [formGroup]="forma"
           (ngSubmit)="guardar()">
 
+        <h3>FORMULARIO DE INGRESO</h3>
+        <p>Formulario de ingreso para socios, víctimas y/o colaboradores de nuestra ONG.</p>
+
         <div class="Formulario-item">
           <div class="Formulario-item-identidad">
             <label for="">Nombres</label>
@@ -49,8 +52,12 @@
             <label for="">Numero de documento (para evitar ingreso de datos falsos)</label>
             <div>
               <input type="number"
-                    placeholder="100.000.001"
-                    formControlName="docnumber">
+                     placeholder="100.000.001"
+                     formControlName="docnumber"
+                     [class.is-invalid]="docnumberNoValido">
+              <small *ngIf="docnumberNoValido" class="text-danger">
+                Ingrese un número de documento
+              </small>
             </div>
           </div>
         </div>
@@ -59,7 +66,7 @@
           <label for="">Dirección (Región, comuna, calle)</label>
           <div>
 
-            <div>
+            <div class="Formulario-item-identidad">
               <select formControlName="region"
                       [class.is-invalid]="regionNoValida"
                       [disabled]="ubicacion.length === 0"
@@ -73,7 +80,8 @@
               </small>
             </div>
 
-            <div>
+            <div class="Formulario-item-identidad slide-down"
+                 *ngIf="mostrarComuna">
               <select formControlName="comunas"
                       [class.is-invalid]="comunasNoValida">
                 <option *ngFor="let comuna of comunas">
@@ -85,7 +93,7 @@
               </small>
             </div>
 
-            <div>
+            <div class="Formulario-item-identidad">
               <input type="text"
                      placeholder="Calle #"
                      formControlName="calle"
@@ -101,7 +109,13 @@
         <div class="Formulario-item">
           <label for="">Número de Teléfono</label>
           <div>
-            <input type="number" placeholder="+56 9 1234 5678">
+            <input type="number"
+                   placeholder="+56 9 1234 5678"
+                   formControlName="telefono"
+                   [class.is-invalid]="telefonoNoValido">
+            <small *ngIf="telefonoNoValido" class="text-danger">
+              Ingrese un número de teléfono
+            </small>
           </div>
         </div>
 
@@ -121,29 +135,82 @@
         <div class="Formulario-item">
           <label for="">Motivo de su ingreso(Me robaron un vehículo, Soy miembro de una institución o rma de las FFAA, Me interesa colaborar como civil)</label>
           <div>
-            <input type="text" placeholder="Nombres">
+            <input type="radio"
+                   formControlName="motivo"
+                   value="Me robaron un vehículo"
+                   (click)="scrollToElement(formVictimas)">Me robaron un vehículo
+            <input type="radio"
+                   formControlName="motivo"
+                   value="Soy miembro de una institución o rama de las FFAA">Soy miembro de una institución o rama de las FFAA
+            <input type="radio"
+                   formControlName="motivo"
+                   value="Me interesa colaborar como civil">Me interesa colaborar como civil
+            <small *ngIf="correoNoValido" class="text-danger">
+              Seleccione un motivo de ingreso
+            </small>
           </div>
         </div>
 
-        <div class="Formulario-item">
-          <label>&nbsp;</label>
-          <div>
-            <button type="submit">Enviar</button>
+        <div #formVictimas [ngClass]="expandirForm">
+
+          <h3>SÓLO PARA VÍCTIMAS</h3>
+          <p>Sección de preguntas destinadas a ayudarnos a encontrar tu vehículo y obtener más datos sobre el operar de los delincuentes.</p>
+
+          <div class="Formulario-item">
+            <label for="">Patente del vehículo</label>
+            <div>
+              <input type="text"
+                     placeholder="ABCD12"
+                     formControlName="patente"
+                     [class.is-invalid]="patenteNoValida">
+              <small *ngIf="patenteNoValida" class="text-danger">
+                Ingrese una patente válida
+              </small>
+            </div>
           </div>
+
+          <div class="Formulario-item">
+            <label for="">Más datos que pudieras añadir (marca, color, lugar y circunstancias del robo)</label>
+            <div>
+              <textarea formControlName="moredata"></textarea>
+            </div>
+          </div>
+
+          <div class="Formulario-item">
+            <label>Si encontramos tu vehículo, ¿estarías dispuesto a hacer una donación a nuestra ONG?</label>
+            <div>
+              <input type="radio"
+                     formControlName="donacion"
+                     value="Si"
+                     (input)="showHideDonacion($event.target.value)">Si
+              <input type="radio"
+                     formControlName="donacion"
+                     value="No"
+                     (input)="showHideDonacion($event.target.value)">No
+              <input type="radio"
+                     formControlName="donacion"
+                     value="Tal vez"
+                     (input)="showHideDonacion($event.target.value)">Tal vez
+            </div>
+          </div>
+
+          <div class="Formulario-item slide-down"
+               *ngIf="expandirDonacion">
+            <label>¿Cuánto podrías donar?</label>
+            <div>
+              <input type="text"
+                     placeholder="Tu respuesta"
+                     formControlName="montodonacion">
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <button type="submit">Enviar</button>
         </div>
 
     </form>
-
-    <hr>
-    <pre>
-      Estado del formulario: {{forma.valid}}
-      <br>
-      Status: {{forma.status}}
-    </pre>
-
-    <pre>
-      {{forma.value | json}}
-    </pre>
   </div>
 </div>
 
