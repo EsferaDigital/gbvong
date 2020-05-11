@@ -1,5 +1,4 @@
-
-<div #modalF id="Modal-container" class="Modal">
+<div #modalF [ngClass]="animamodal" class="ModalH">
   <div class="Modal-content">
     <form class="Formulario"
           [formGroup]="forma"
@@ -212,5 +211,8 @@
 
     </form>
   </div>
+  <button (click)="closeModal(modalF)" id="closeModal">
+    <i class="fas fa-times"></i>
+  </button>
 </div>
 

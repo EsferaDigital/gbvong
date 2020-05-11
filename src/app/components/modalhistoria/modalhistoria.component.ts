@@ -23,7 +23,7 @@ export class ModalhistoriaComponent{
     // aqui podriamos emitir un datos al componente padre para que cambie el valor de verhistoria y con EventSource, elimine el componente modalhistoria
     this.animamodal = 'zoom-out';
 
-    modal.addEventListener("animationend", ()=>{
+    modal.addEventListener("animationend", () => {
       console.log('animationend')
       this.cerrarhistoria.emit(false)
       // [vermodal] = false

@@ -8,8 +8,9 @@ export class ValidadoresService {
 
   constructor() { }
 
-  noHerrera(control: FormControl): {[s:string]: boolean}{
-    if(control.value?.toLowerCase() === 'herrera'){
+  // En las validaciones personalizadas si retorna null, entonces pasa la validacion
+  noHerrera(control: FormControl): {[s: string]: boolean}{
+    if (control.value?.toLowerCase() === 'herrera'){
       return {
         noHerrera: true
       }

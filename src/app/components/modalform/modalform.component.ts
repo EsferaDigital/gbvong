@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ValidadoresService } from '../../services/validadores.service';
 import { DatosService } from '../../services/datos.service';
+import { RegistroModel } from '../../models/registro.model';
 
 @Component({
   selector: 'gb-modalform',
@@ -9,6 +9,8 @@ import { DatosService } from '../../services/datos.service';
   styleUrls: ['./modalform.component.scss']
 })
 export class ModalformComponent implements OnInit {
+  @Input() animamodal: string
+  @Output() closeform: EventEmitter<boolean>
 
   forma: FormGroup
   ubicacion: any[] = []
@@ -16,12 +18,14 @@ export class ModalformComponent implements OnInit {
   comunas: any[]
   expandirForm = "elemento-oculto"
   expandirDonacion: boolean
+  registro = new RegistroModel()
 
   constructor(
     private fb: FormBuilder,
-    private validadores: ValidadoresService,
     private datosService: DatosService
     ) {
+    this.closeform = new EventEmitter(),
+    this.animamodal = 'zoom-in',
     this.crearFormulario();
   }
 
@@ -36,6 +40,15 @@ export class ModalformComponent implements OnInit {
           comunas: ''
         })
       })
+  }
+
+  closeModal(modal: any){
+    this.animamodal = 'zoom-out'
+
+    modal.addEventListener('animationend', () => {
+      console.log('final de la animacion')
+      this.closeform.emit(false)
+    })
   }
 
   get nombresNoValido(){
@@ -83,31 +96,33 @@ export class ModalformComponent implements OnInit {
     this.forma = this.fb.group({
       nombres: ['', [
         Validators.required,
-        Validators.minLength(5)]],
+        Validators.minLength(5)
+      ]],
       apellidos: ['', [
         Validators.required,
-        Validators.minLength(5)]],
+        Validators.minLength(5)
+      ]],
       rut: ['', [
         Validators.required
       ]],
       docnumber: ['', [
-                   Validators.required
-                  ]],
+        Validators.required
+      ]],
       direccion: this.fb.group({
         region: ['', Validators.required],
         comunas: ['', Validators.required],
         calle: ['', Validators.required]
       }),
       telefono: ['', [
-                  Validators.required
-                ]],
+        Validators.required
+      ]],
       correo: ['', [
-                Validators.required,
-                Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
-              ]],
+        Validators.required,
+        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
+      ]],
       motivo: ['Me interesa colaborar como civil', [
-                Validators.required
-              ]],
+        Validators.required
+      ]],
       patente: [''],
       moredata: [''],
       donacion: ['No'],
@@ -120,7 +135,7 @@ export class ModalformComponent implements OnInit {
 
     // unshift es una funcion nativa que añade un valor al principio de un array
     this.comunas.unshift('Seleccione una comuna')
-    console.log(this.comunas)
+    // console.log(this.comunas)
     this.mostrarComuna = true;
   }
 
@@ -152,7 +167,7 @@ export class ModalformComponent implements OnInit {
 
   // Evento que guarda la info en base de datos
   guardar(){
-    console.log(this.forma);
+    // console.log(this.forma);
 
     // Para marcar como tocados todos los campos invalidos
     if (this.forma.invalid){
@@ -167,10 +182,37 @@ export class ModalformComponent implements OnInit {
       })
     }
 
+    // Guardamos en el modelo registro, el objeto que enviaremos a base de datos
+    this.registro = this.forma.value
+
+    // Posteamos el registro ejecutando la funcion postRegistro del servicio datosService
+    this.datosService.postRegistro(this.registro)
+                        .subscribe( resp => {
+                          console.log(resp)
+                          this.registro = resp
+                        })
+
+    console.log(this.forma)
+    console.log(this.registro)
+
     // Posteo de la informacion a base de datos (falta)
 
-    // Resetear el formulario
-    this.forma.reset()
+    // this.datosService.postRegistro(this.forma.value)
+    //         .subscribe( resp => {
+    //           console.log(resp)
+    //         })
+
+    // // Resetear el formulario
+    // this.forma.reset()
   }
 
 }
+// \. Para pedir que la expresion lleve un punto en x posición de la expresión
+// Para pedir que lleve numeros del 0 al 9 en x posicion de la expresión
+
+// (12) si quisiera que tomara exactamente el número 12
+// (hola|mundo) Si quisiera que tomara exactamente hola y mundo
+
+// No puede haber nada antes de este simbolo ^
+// No puede haber nada después de este simbolo $
+// let regExRut = /^[0-9]{1,2}\.[0-9]{1}[0-9]{1}[0-9]{1}\.[0-9]{1}[0-9]{1}[0-9]{1}\-[0-9kK]{1}$/

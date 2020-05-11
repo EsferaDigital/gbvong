@@ -1,6 +1,6 @@
 <main class="Main">
   <gb-modalhistoria (cerrarhistoria)="ocultarHistoria($event)" *ngIf="verhistoria"></gb-modalhistoria>
-  <gb-modalform *ngIf="verformulario"></gb-modalform>
+  <gb-modalform (closeform)="ocultarFormulario($event)" *ngIf="verformulario"></gb-modalform>
   <div class="Banner">
     <div class="Container-grid">
       <h1 class="Titulo">Grupo GBV</h1>
