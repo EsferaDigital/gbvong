@@ -1,4 +1,4 @@
-<div #modalF [ngClass]="animamodal" class="ModalH">
+<div #modalF [ngClass]="animamodal" class="ModalH scroll-item">
   <div class="Modal-content">
     <form class="Formulario"
           [formGroup]="forma"
@@ -9,8 +9,9 @@
 
         <div class="Formulario-item">
           <div class="Formulario-item-identidad">
-            <label for="">Nombres</label>
-            <div>
+
+            <div class="Nombres">
+              <label >Nombres</label>
               <input type="text"
                     placeholder="Nombres"
                     formControlName="nombres"
@@ -19,11 +20,8 @@
                 Ingrese al menos 5 caracteres
               </small>
             </div>
-          </div>
-
-          <div class="Formulario-item-identidad">
-            <label for="">Apellidos</label>
-            <div>
+            <div class="Apellidos">
+              <label>Apellidos</label>
               <input type="text"
                     placeholder="Apellidos"
                     formControlName="apellidos"
@@ -32,11 +30,8 @@
                 Ingrese al menos 5 caracteres
               </small>
             </div>
-          </div>
-
-          <div class="Formulario-item-identidad">
-            <label for="">RUT</label>
-            <div>
+            <div class="Rut">
+              <label>RUT</label>
               <input type="text"
                     placeholder="12.345.678-9"
                     formControlName="rut"
@@ -45,27 +40,28 @@
                 Ingrese un RUT válido
               </small>
             </div>
-          </div>
-
-          <div class="Formulario-item-identidad">
-            <label for="">Numero de documento (para evitar ingreso de datos falsos)</label>
-            <div>
-              <input type="number"
-                     placeholder="100.000.001"
+            <div class="Docnumber">
+              <label>Numero de documento (para evitar ingreso de datos falsos)</label>
+              <div class="Docnumber-img">
+                <img src="../../../assets/img/numero-documento.png" alt="Número de Documento">
+              </div>
+              <input type="text"
+                     placeholder="Ingresa el tuyo"
                      formControlName="docnumber"
                      [class.is-invalid]="docnumberNoValido">
               <small *ngIf="docnumberNoValido" class="text-danger">
                 Ingrese un número de documento
               </small>
             </div>
+
           </div>
         </div>
 
         <div class="Formulario-item" formGroupName="direccion">
-          <label for="">Dirección (Región, comuna, calle)</label>
-          <div>
+          <label>Dirección (Región, comuna, calle)</label>
+          <div class="Formulario-item-direccion">
 
-            <div class="Formulario-item-identidad">
+            <div class="Region">
               <select formControlName="region"
                       [class.is-invalid]="regionNoValida"
                       [disabled]="ubicacion.length === 0"
@@ -78,8 +74,7 @@
                 Seleccione una Region
               </small>
             </div>
-
-            <div class="Formulario-item-identidad slide-down"
+            <div class="Comunas slide-down"
                  *ngIf="mostrarComuna">
               <select formControlName="comunas"
                       [class.is-invalid]="comunasNoValida">
@@ -91,15 +86,14 @@
                 Seleccione una Comuna
               </small>
             </div>
-
-            <div class="Formulario-item-identidad">
+            <div class="Calle">
               <input type="text"
                      placeholder="Calle #"
                      formControlName="calle"
                      [class.is-invalid]="calleNoValida">
-                <small *ngIf="calleNoValida" class="text-danger">
+              <small *ngIf="calleNoValida" class="text-danger">
                   Escriba una dirección
-                </small>
+              </small>
             </div>
 
           </div>
@@ -109,7 +103,7 @@
           <label for="">Número de Teléfono</label>
           <div>
             <input type="number"
-                   placeholder="+56 9 1234 5678"
+                   placeholder="9 1234 5678"
                    formControlName="telefono"
                    [class.is-invalid]="telefonoNoValido">
             <small *ngIf="telefonoNoValido" class="text-danger">
@@ -131,26 +125,43 @@
           </div>
         </div>
 
-        <div class="Formulario-item">
-          <label for="">Motivo de su ingreso(Me robaron un vehículo, Soy miembro de una institución o rma de las FFAA, Me interesa colaborar como civil)</label>
-          <div>
-            <input type="radio"
-                   formControlName="motivo"
-                   value="Me robaron un vehículo"
-                   (click)="scrollToElement(formVictimas)">Me robaron un vehículo
-            <input type="radio"
-                   formControlName="motivo"
-                   value="Soy miembro de una institución o rama de las FFAA">Soy miembro de una institución o rama de las FFAA
-            <input type="radio"
-                   formControlName="motivo"
-                   value="Me interesa colaborar como civil">Me interesa colaborar como civil
+        <div class="Formulario-item form-motivos">
+          <h3>MOTIVO DE TU REGISTRO</h3>
+
+          <div class="Motivos">
+            <div class="Motivos-item">
+              <input type="radio"
+                     id="robo"
+                     formControlName="motivo"
+                     value="Me robaron un vehículo"
+                     (click)="scrollToElement(formVictimas)">
+              <label for="robo">Me robaron un vehículo</label>
+            </div>
+            <div class="Motivos-item">
+              <input type="radio"
+                     id="ffaa"
+                     formControlName="motivo"
+                     value="Soy miembro de una institución o rama de las FFAA">
+              <label for="ffaa">Soy miembro de una institución o rama de las FFAA</label>
+            </div>
+            <div class="Motivos-item">
+              <input type="radio"
+                     id="civil"
+                     formControlName="motivo"
+                     value="Me interesa colaborar como civil">
+              <label for="civil">
+                Me interesa colaborar como civil
+              </label>
+            </div>
+
             <small *ngIf="correoNoValido" class="text-danger">
               Seleccione un motivo de ingreso
             </small>
           </div>
+
         </div>
 
-        <div #formVictimas [ngClass]="expandirForm">
+        <div #formVictimas [ngClass]="expandirForm" class="form-motivos">
 
           <h3>SÓLO PARA VÍCTIMAS</h3>
           <p>Sección de preguntas destinadas a ayudarnos a encontrar tu vehículo y obtener más datos sobre el operar de los delincuentes.</p>
@@ -169,27 +180,42 @@
           </div>
 
           <div class="Formulario-item">
-            <label for="">Más datos que pudieras añadir (marca, color, lugar y circunstancias del robo)</label>
+            <label>Más datos que pudieras añadir</label>
             <div>
-              <textarea formControlName="moredata"></textarea>
+              <textarea formControlName="moredata"
+                        placeholder="Marca, color, lugar y circunstancias del robo"></textarea>
             </div>
           </div>
 
-          <div class="Formulario-item">
-            <label>Si encontramos tu vehículo, ¿estarías dispuesto a hacer una donación a nuestra ONG?</label>
-            <div>
-              <input type="radio"
-                     formControlName="donacion"
-                     value="Si"
-                     (input)="showHideDonacion($event.target.value)">Si
-              <input type="radio"
-                     formControlName="donacion"
-                     value="No"
-                     (input)="showHideDonacion($event.target.value)">No
-              <input type="radio"
-                     formControlName="donacion"
-                     value="Tal vez"
-                     (input)="showHideDonacion($event.target.value)">Tal vez
+          <div class="Formulario-item form-motivos">
+            <h3>SI ENCONTRAMOS TU AUTO</h3>
+            <p>¿Estarías dispuesto a hacer una donación a nuestra ONG?</p>
+            <div class="Motivos">
+              <div class="Motivos-item">
+                <input type="radio"
+                       formControlName="donacion"
+                       value="Si"
+                       (input)="showHideDonacion($event.target.value)"
+                       id="Si">
+                <label for="Si">Si</label>
+              </div>
+              <div class="Motivos-item">
+                <input type="radio"
+                       formControlName="donacion"
+                       value="No"
+                       (input)="showHideDonacion($event.target.value)"
+                       id="No">
+                <label for="No">No</label>
+              </div>
+              <div class="Motivos-item">
+                <input type="radio"
+                       formControlName="donacion"
+                       value="Tal vez"
+                       (input)="showHideDonacion($event.target.value)"
+                       id="talvez">
+                <label for="talvez">Tal vez</label>
+              </div>
+
             </div>
           </div>
 
@@ -197,7 +223,7 @@
                *ngIf="expandirDonacion">
             <label>¿Cuánto podrías donar?</label>
             <div>
-              <input type="text"
+              <input type="number"
                      placeholder="Tu respuesta"
                      formControlName="montodonacion">
             </div>
@@ -205,8 +231,8 @@
 
         </div>
 
-        <div>
-          <button type="submit">Enviar</button>
+        <div class="Formulario-btn">
+          <button [disabled]="!forma.valid" type="submit">ENVIAR</button>
         </div>
 
     </form>

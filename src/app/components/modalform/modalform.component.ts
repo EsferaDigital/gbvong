@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatosService } from '../../services/datos.service';
 import { RegistroModel } from '../../models/registro.model';
+import Swal from 'sweetalert2'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'gb-modalform',
@@ -46,7 +48,7 @@ export class ModalformComponent implements OnInit {
     this.animamodal = 'zoom-out'
 
     modal.addEventListener('animationend', () => {
-      console.log('final de la animacion')
+      // console.log('final de la animacion')
       this.closeform.emit(false)
     })
   }
@@ -103,10 +105,12 @@ export class ModalformComponent implements OnInit {
         Validators.minLength(5)
       ]],
       rut: ['', [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(12)
       ]],
       docnumber: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^[0-9]{3}\.[0-9]{3}\.[0-9]{3}$')
       ]],
       direccion: this.fb.group({
         region: ['', Validators.required],
@@ -114,7 +118,9 @@ export class ModalformComponent implements OnInit {
         calle: ['', Validators.required]
       }),
       telefono: ['', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(9),
+        Validators.maxLength(11)
       ]],
       correo: ['', [
         Validators.required,
@@ -123,8 +129,8 @@ export class ModalformComponent implements OnInit {
       motivo: ['Me interesa colaborar como civil', [
         Validators.required
       ]],
-      patente: [''],
-      moredata: [''],
+      patente: ['', Validators.maxLength(6)],
+      moredata: ['', Validators.maxLength(500)],
       donacion: ['No'],
       montodonacion: [''],
     })
@@ -167,7 +173,7 @@ export class ModalformComponent implements OnInit {
 
   // Evento que guarda la info en base de datos
   guardar(){
-    // console.log(this.forma);
+    console.log(this.forma);
 
     // Para marcar como tocados todos los campos invalidos
     if (this.forma.invalid){
@@ -182,18 +188,34 @@ export class ModalformComponent implements OnInit {
       })
     }
 
+    Swal.fire({
+      title: 'Espere',
+      text: 'Guardando información',
+      icon: 'info',
+      allowOutsideClick: false
+    })
+    Swal.showLoading()
+
     // Guardamos en el modelo registro, el objeto que enviaremos a base de datos
     this.registro = this.forma.value
 
+    // Reservamos un Observable en la variable peticion
+    let posteo: Observable<any>
     // Posteamos el registro ejecutando la funcion postRegistro del servicio datosService
-    this.datosService.postRegistro(this.registro)
-                        .subscribe( resp => {
-                          console.log(resp)
-                          this.registro = resp
-                        })
+    posteo = this.datosService.postRegistro(this.registro)
 
-    console.log(this.forma)
-    console.log(this.registro)
+    // Nos subscribimos al observable del posteo para ver lo que nos responden desde backend
+
+    posteo.subscribe(resp => {
+      Swal.fire({
+        title: `Gracias ${this.registro.nombres}`,
+        text: 'Los datos se enviaron correctamente',
+        icon: 'success'
+      })
+    })
+
+    // console.log(this.forma)
+    // console.log(this.registro)
 
     // Posteo de la informacion a base de datos (falta)
 
