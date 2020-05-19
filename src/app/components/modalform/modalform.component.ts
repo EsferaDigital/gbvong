@@ -106,11 +106,11 @@ export class ModalformComponent implements OnInit {
       ]],
       rut: ['', [
         Validators.required,
-        Validators.maxLength(12)
+        Validators.pattern('^([0-9]{1,2})\.([0-9]{3})\.([0-9]{3})\-([0-9kK]{1})$')
       ]],
       docnumber: ['', [
         Validators.required,
-        Validators.pattern('^[0-9]{3}\.[0-9]{3}\.[0-9]{3}$')
+        Validators.pattern('^([0-9]{3})\.([0-9]{3})\.([0-9]{3})$')
       ]],
       direccion: this.fb.group({
         region: ['', Validators.required],
@@ -129,7 +129,10 @@ export class ModalformComponent implements OnInit {
       motivo: ['Me interesa colaborar como civil', [
         Validators.required
       ]],
-      patente: ['', Validators.maxLength(6)],
+      patente: ['', [
+        Validators.maxLength(6),
+        Validators.pattern('^([a-zA-Z0-9]{2})([a-zA-Z0-9]{2})([0-9]{2})$')
+      ]],
       moredata: ['', Validators.maxLength(500)],
       donacion: ['No'],
       montodonacion: [''],
@@ -173,7 +176,7 @@ export class ModalformComponent implements OnInit {
 
   // Evento que guarda la info en base de datos
   guardar(){
-    console.log(this.forma);
+    // console.log(this.forma);
 
     // Para marcar como tocados todos los campos invalidos
     if (this.forma.invalid){
@@ -212,20 +215,9 @@ export class ModalformComponent implements OnInit {
         text: 'Los datos se enviaron correctamente',
         icon: 'success'
       })
+      // // Resetear el formulario
+      this.forma.reset()
     })
-
-    // console.log(this.forma)
-    // console.log(this.registro)
-
-    // Posteo de la informacion a base de datos (falta)
-
-    // this.datosService.postRegistro(this.forma.value)
-    //         .subscribe( resp => {
-    //           console.log(resp)
-    //         })
-
-    // // Resetear el formulario
-    // this.forma.reset()
   }
 
 }
@@ -237,4 +229,5 @@ export class ModalformComponent implements OnInit {
 
 // No puede haber nada antes de este simbolo ^
 // No puede haber nada después de este simbolo $
-// let regExRut = /^[0-9]{1,2}\.[0-9]{1}[0-9]{1}[0-9]{1}\.[0-9]{1}[0-9]{1}[0-9]{1}\-[0-9kK]{1}$/
+// \d = [0-9]
+// let regExRut = /^[0-9]{1,2}\.\d{3}\.\d{3}\-[0-9kK]{1}$/

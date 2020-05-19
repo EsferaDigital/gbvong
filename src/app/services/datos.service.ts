@@ -17,7 +17,7 @@ export class DatosService {
     return this.http.get('../../assets/docs/comunas.json');
   }
 
-  // Para obtener los registros de socios y víctimas de los vehículos robados (base de datos firebase)
+  // Para postear los registros de socios y víctimas de los vehículos robados (base de datos firebase)
   // el backend nos responde con el id del objeto posteado en base de datos
   postRegistro(registro: RegistroModel){
     return this.http.post(`${this.url}/registros.json`, registro)

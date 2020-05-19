@@ -45,9 +45,11 @@ export class HeaderComponent {
 
   // Nota (se puede mejorar creando un objeto con el menu para luego recorrerlo con un *nGfor en el html)
 
-  toGoSection(section: string){
+  toGoSection(section: string, boton: any, panel: any){
     document.getElementById(section)
       .scrollIntoView({behavior: 'smooth'})
+    boton.classList.toggle('is-active')
+    panel.classList.toggle('is-active')
   }
 
 // Detectar scroll

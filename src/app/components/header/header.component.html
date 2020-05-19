@@ -4,7 +4,7 @@
         [ngStyle]="{'background': colorHeader}">
   <section class="Header-container">
     <div class="Logo">
-      <a href="http://localhost:4200/">
+      <a href="https://gbvong.cl">
         <img src="../../../assets/img/logo.png" alt="Logo GBV">
       </a>
     </div>
@@ -17,16 +17,16 @@
       <nav class="Menu">
         <ul>
           <li>
-            <a href="http://localhost:4200/">Inicio</a>
+            <a href="https://gbvong.cl">Inicio</a>
           </li>
           <li>
-            <a (click)="toGoSection('somos')">Quiénes Somos?</a>
+            <a (click)="toGoSection('somos', btnPanel, Panel)">Quiénes Somos?</a>
           </li>
           <li>
-            <a (click)="toGoSection('hacemos')">Qué Hacemos?</a>
+            <a (click)="toGoSection('hacemos', btnPanel, Panel)">Qué Hacemos?</a>
           </li>
           <li>
-            <a (click)="toGoSection('sumate')">Súmate</a>
+            <a (click)="toGoSection('sumate', btnPanel, Panel)">Súmate</a>
           </li>
         </ul>
       </nav>

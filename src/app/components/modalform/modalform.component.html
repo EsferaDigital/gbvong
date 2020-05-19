@@ -232,6 +232,9 @@
         </div>
 
         <div class="Formulario-btn">
+          <small *ngIf="!forma.valid" class="text-danger">
+            El botón estará bloqueado hasta que llene el formulario correctamente
+          </small>
           <button [disabled]="!forma.valid" type="submit">ENVIAR</button>
         </div>
 

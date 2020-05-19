@@ -92,7 +92,7 @@
         grid-template-areas: "region comunas"
                              "calle calle";
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr minmax(0%,1fr);
+        grid-template-rows: 1fr 1fr minmax(0%, max-content);
       }
       & .Region{
         grid-area: region;
