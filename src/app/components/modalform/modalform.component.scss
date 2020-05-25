@@ -1,6 +1,7 @@
 
 .is-invalid{
-  border: 1px solid #C0362C;
+  border: 2px solid #C0362C;
+  color: #C0362C;
 }
 
 .elemento-oculto{
@@ -9,4 +10,20 @@
 
 .elemento-visible{
   display: block;
+}
+
+.text-center{
+  display: block;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: .5rem;
+}
+
+.Uppercase{
+  text-transform: uppercase;
+}
+
+.Lowercase{
+  text-transform: lowercase;
 }

@@ -27,6 +27,10 @@
     padding: .5rem;
     font-family: $fuente-secundaria;
     background-color: color(bg-item);
+    outline-style: none;
+    &:focus{
+      border: 2px solid #1F5764;
+    }
   }
   &-item{
     width: 90%;

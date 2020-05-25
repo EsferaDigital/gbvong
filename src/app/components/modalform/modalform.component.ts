@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatosService } from '../../services/datos.service';
 import { RegistroModel } from '../../models/registro.model';
 import Swal from 'sweetalert2'
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'gb-modalform',
@@ -86,10 +85,18 @@ export class ModalformComponent implements OnInit {
   }
 
   get correoNoValido(){
+    let correo = this.forma.get('patente');
+    correo.valueChanges.subscribe(() => {
+      correo.patchValue(correo.value.toLowerCase(), {emitEvent: false});
+    })
     return this.forma.get('correo').invalid && this.forma.get('correo').touched
   }
 
   get patenteNoValida(){
+    let patente = this.forma.get('patente');
+    patente.valueChanges.subscribe(() => {
+      patente.patchValue(patente.value.toUpperCase(), {emitEvent: false});
+    })
     return this.forma.get('patente').invalid && this.forma.get('patente').touched
   }
 
@@ -141,7 +148,6 @@ export class ModalformComponent implements OnInit {
 
   changeRegion(region){
     this.comunas = this.ubicacion.find(ubc => ubc.region === region).comunas
-
     // unshift es una funcion nativa que añade un valor al principio de un array
     this.comunas.unshift('Seleccione una comuna')
     // console.log(this.comunas)
@@ -176,7 +182,7 @@ export class ModalformComponent implements OnInit {
 
   // Evento que guarda la info en base de datos
   guardar(){
-    // console.log(this.forma);
+    console.log(this.forma);
 
     // Para marcar como tocados todos los campos invalidos
     if (this.forma.invalid){
@@ -202,32 +208,21 @@ export class ModalformComponent implements OnInit {
     // Guardamos en el modelo registro, el objeto que enviaremos a base de datos
     this.registro = this.forma.value
 
-    // Reservamos un Observable en la variable peticion
-    let posteo: Observable<any>
+    // // Reservamos un Observable en la variable peticion
+    // let posteo: Observable<any>
     // Posteamos el registro ejecutando la funcion postRegistro del servicio datosService
-    posteo = this.datosService.postRegistro(this.registro)
-
-    // Nos subscribimos al observable del posteo para ver lo que nos responden desde backend
-
-    posteo.subscribe(resp => {
-      Swal.fire({
-        title: `Gracias ${this.registro.nombres}`,
-        text: 'Los datos se enviaron correctamente',
-        icon: 'success'
-      })
-      // // Resetear el formulario
-      this.forma.reset()
-    })
+    this.datosService.postRegistro(this.registro)
+          .then(resp => {
+            Swal.fire({
+              title: `Gracias ${this.registro.nombres}`,
+              text: 'Los datos se enviaron correctamente',
+              icon: 'success'
+            })
+            // // Resetear el formulario
+            this.forma.reset()
+          })
+          .catch(err => console.error(err));
   }
 
 }
-// \. Para pedir que la expresion lleve un punto en x posición de la expresión
-// Para pedir que lleve numeros del 0 al 9 en x posicion de la expresión
 
-// (12) si quisiera que tomara exactamente el número 12
-// (hola|mundo) Si quisiera que tomara exactamente hola y mundo
-
-// No puede haber nada antes de este simbolo ^
-// No puede haber nada después de este simbolo $
-// \d = [0-9]
-// let regExRut = /^[0-9]{1,2}\.\d{3}\.\d{3}\-[0-9kK]{1}$/

@@ -1,31 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map} from 'rxjs/operators'
 import { RegistroModel } from '../models/registro.model';
+import {AngularFirestore, DocumentReference} from '@angular/fire/firestore';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatosService {
+  private coleccion = 'registros';
 
-  private url = 'https://crud-gbvong.firebaseio.com'
-  constructor(private http: HttpClient) { }
+  constructor(
+    private db: AngularFirestore,
+    private http: HttpClient
+    ) { }
 
   // Para obtener Regiones y comunas (datos en local)
   getUbicacion(){
     return this.http.get('../../assets/docs/comunas.json');
   }
 
-  // Para postear los registros de socios y víctimas de los vehículos robados (base de datos firebase)
-  // el backend nos responde con el id del objeto posteado en base de datos
-  postRegistro(registro: RegistroModel){
-    return this.http.post(`${this.url}/registros.json`, registro)
-                      .pipe(
-                        map( (resp: any) => {
-                          registro.id = resp.name
-                          return registro
-                        })
-                      )
+  postRegistro(registro: RegistroModel): Promise<DocumentReference> {
+    return this.db.collection(this.coleccion).add(registro);
   }
+
+  // async getPatente(patenteForm: any){
+  //   // Devuelve la patente consultada como string
+  //   let patenteDB
+  //   // Hago la consulta a la base de datos
+  //   const query = await this.db.collection(this.coleccion, ref => ref.where('patente', '==', patenteForm)).valueChanges()
+  //       .pipe(
+              // map de rxjs
+  //         map(( (resp: any) => {
+  //           // Uso el map para obtener del objeto completo, solo la patente dentro del objeto
+  //           return resp.map( ({patente}) => ({patente}) )
+  //         }))
+  //       )
+  //       .subscribe(resp => {
+  //         // Asigno el valor de la clave patente que está en la posición 0 de un array de objetos (en realidad hay un solo objeto dentro del array)
+  //         patenteDB = resp[0].patente;
+  //         // console.log(typeof(patenteDB))
+  //       });
+  //   // Devuelvo el valor que asigné
+  //   return patenteDB;
+  // }
 }

@@ -12,7 +12,10 @@ import { ModalhistoriaComponent } from './components/modalhistoria/modalhistoria
 
 // Modulos
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import {HttpClientModule} from '@angular/common/http'
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

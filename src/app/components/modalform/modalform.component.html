@@ -167,13 +167,17 @@
           <p>Sección de preguntas destinadas a ayudarnos a encontrar tu vehículo y obtener más datos sobre el operar de los delincuentes.</p>
 
           <div class="Formulario-item">
-            <label for="">Patente del vehículo</label>
+            <label>Patente del vehículo</label>
             <div>
               <input type="text"
+                     #patente
+                     (patente)="patente.value=$event.target.value.toUppercase()"
                      placeholder="ABCD12"
                      formControlName="patente"
+                     class="Uppercase"
                      [class.is-invalid]="patenteNoValida">
-              <small *ngIf="patenteNoValida" class="text-danger">
+              <small *ngIf="patenteNoValida"
+                     class="text-danger">
                 Ingrese una patente válida
               </small>
             </div>
@@ -224,7 +228,7 @@
             <label>¿Cuánto podrías donar?</label>
             <div>
               <input type="number"
-                     placeholder="Tu respuesta"
+                     placeholder="5000"
                      formControlName="montodonacion">
             </div>
           </div>
@@ -232,7 +236,7 @@
         </div>
 
         <div class="Formulario-btn">
-          <small *ngIf="!forma.valid" class="text-danger">
+          <small *ngIf="!forma.valid" class="text-center">
             El botón estará bloqueado hasta que llene el formulario correctamente
           </small>
           <button [disabled]="!forma.valid" type="submit">ENVIAR</button>
