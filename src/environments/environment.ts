@@ -5,7 +5,7 @@
 // Esto a hay que pasarlo a false cuando estemos en desarrollo
 
 export const environment = {
-  production: true,
+  production: false,
   firebase: {
     apiKey: "AIzaSyCAAlbOd6eZcF19jQl_-ds9Kwa9rUF2PaU",
     authDomain: "crud-gbvong.firebaseapp.com",
