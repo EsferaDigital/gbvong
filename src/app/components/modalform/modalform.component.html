@@ -184,10 +184,12 @@
           </div>
 
           <div class="Formulario-item">
-            <label>Más datos que pudieras añadir</label>
+            <label>Más datos que pudieras añadir (te quedan {{contador}} caracteres)</label>
             <div>
               <textarea formControlName="moredata"
-                        placeholder="Marca, color, lugar y circunstancias del robo"></textarea>
+                        placeholder="Marca, color, lugar y circunstancias del robo (máximo 500 caracteres)"
+                        (keydown)="getDisabledValue($event)">
+              </textarea>
             </div>
           </div>
 

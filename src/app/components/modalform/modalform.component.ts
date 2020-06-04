@@ -20,6 +20,8 @@ export class ModalformComponent implements OnInit {
   expandirForm = "elemento-oculto"
   expandirDonacion: boolean
   registro = new RegistroModel()
+  caracteresTextArea = 0
+  contador = 500
 
   constructor(
     private fb: FormBuilder,
@@ -85,11 +87,25 @@ export class ModalformComponent implements OnInit {
   }
 
   get correoNoValido(){
-    let correo = this.forma.get('patente');
+    let correo = this.forma.get('correo');
     correo.valueChanges.subscribe(() => {
       correo.patchValue(correo.value.toLowerCase(), {emitEvent: false});
     })
     return this.forma.get('correo').invalid && this.forma.get('correo').touched
+  }
+
+  getDisabledValue(event){
+    let moredata = this.forma.get('moredata').value
+    this.caracteresTextArea = moredata.length
+    if (event.isTrusted && event.key !== 'Backspace'){
+      this.contador = this.contador - 1
+    }
+    if (this.contador > 0 && event.key === 'Backspace'){
+      this.contador = this.contador + 1
+    }
+    if (this.caracteresTextArea >= 499){
+      this.forma.get('moredata').disable()
+    }
   }
 
   get patenteNoValida(){
