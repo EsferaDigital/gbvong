@@ -188,8 +188,13 @@
             <div>
               <textarea formControlName="moredata"
                         placeholder="Marca, color, lugar y circunstancias del robo (máximo 500 caracteres)"
-                        (keydown)="getDisabledValue($event)">
+                        (keydown)="getDisabledValue($event)"
+                        [class.is-invalid]="moredataNoValido">
               </textarea>
+              <small *ngIf="moredataNoValido"
+                     class="text-danger">
+                Has excedido el número de caracteres
+              </small>
             </div>
           </div>
 

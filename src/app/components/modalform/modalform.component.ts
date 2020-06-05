@@ -86,6 +86,10 @@ export class ModalformComponent implements OnInit {
     return this.forma.get('telefono').invalid && this.forma.get('telefono').touched
   }
 
+  get moredataNoValido(){
+    return this.forma.get('moredata').invalid
+  }
+
   get correoNoValido(){
     let correo = this.forma.get('correo');
     correo.valueChanges.subscribe(() => {
@@ -100,11 +104,11 @@ export class ModalformComponent implements OnInit {
     if (event.isTrusted && event.key !== 'Backspace'){
       this.contador = this.contador - 1
     }
-    if (this.contador > 0 && event.key === 'Backspace'){
+    if (this.contador >= 0 && this.contador <= 499 && event.key === 'Backspace'){
       this.contador = this.contador + 1
     }
     if (this.caracteresTextArea >= 499){
-      this.forma.get('moredata').disable()
+      this.contador = 0
     }
   }
 
