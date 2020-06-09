@@ -24,7 +24,7 @@ export class ModalhistoriaComponent{
     this.animamodal = 'zoom-out';
 
     modal.addEventListener("animationend", () => {
-      console.log('animationend')
+      // console.log('animationend')
       this.cerrarhistoria.emit(false)
       // [vermodal] = false
       // Mandar un valor al componente padre (main) y desde allí destruir con un ngIf el modal

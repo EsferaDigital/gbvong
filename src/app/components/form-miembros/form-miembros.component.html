@@ -1,0 +1,75 @@
+<div #modalM [ngClass]="animamodal" class="ModalH scroll-item">
+  <div class="Modal-content">
+    <form class="Formulario">
+      <h3>FORMULARIO DE DENUNCIA</h3>
+      <p>Formulario de denuncia para víctimas de robo</p>
+
+      <div class="Formulario-item">
+        <div class="Nombres">
+          <input type="text"
+                 placeholder="Nombre completo">
+          <small class="text-danger">
+            Ingrese al menos 10 caracteres
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Rut">
+          <input type="text"
+                 placeholder="12.345.567-8">
+          <small class="text-danger">
+            Ingrese un RUT válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class=docnumber>
+          <div class="docnumber-img">
+            <img src="../../../assets/img/numero-documento.png" alt="Número de Documento">
+          </div>
+          <input type="number"
+                 placeholder="Ingresa el tuyo">
+          <small class="text-danger">
+            Ingrese un número de documento
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Phone">
+          <input type="number"
+                 placeholder="912345678">
+          <small class="text-danger">
+            Ingrese un número válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Mail">
+          <input type="email"
+                 placeholder="Escriba su correo">
+          <small class="text-danger">
+            Ingrese un correo válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <h2>Dirección (Región, comuna, calle)</h2>
+        <div class="Formulario-item-direccion">
+          <div class="Region">
+            <select name="" id=""></select>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+  <button (click)="closeModal(modalM)" class="closeModal">
+    <i class="fas fa-times"></i>
+  </button>
+</div>

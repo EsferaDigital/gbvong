@@ -1,4 +1,4 @@
-.Main, .Somos .Hacemos{
+.Main, .Somos .Hacemos .Denuncia{
   margin: auto;
   max-width: $ancho-maximo;
 }
@@ -41,6 +41,24 @@
       padding-top: 2rem;
     }
   }
+  & .Box-text{
+    & .Resultados{
+      margin-top: 1rem;
+      width: 100%;
+      &-title{
+        color: color(success);
+        font-weight: 400;
+      }
+      &-recuperados{
+        margin-top: .5rem;
+        font-size: 1.4rem;
+        & span{
+          font-size: inherit;
+          color: color(tacha);
+        }
+      }
+    }
+  }
 }
 
 .Hacemos{
@@ -64,6 +82,45 @@
       grid-gap: 1rem;
     }
   }
+}
+
+.Denuncia{
+  @include section-img(color(primary), .8);
+  background-image: img("fondo-denuncia.jpg");
+  padding-bottom: 1rem;
+  & .Box-text:nth-child(1){
+    width: 100%;
+    background-color: color(secondary);
+    position: relative;
+    z-index: capa(capa1);
+  }
+  & .Box-text{
+    width: 100%;
+    position: relative;
+    z-index: capa(capa1);
+    & .Card-text{
+      // border: 1px solid green;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      // grid-gap: 1rem;
+      padding: 0 1rem;
+      align-items: stretch; //vertical
+      justify-items: center; // horizontal
+      & .parrafo-denuncia{
+        width: 100%;
+        margin: .5rem 0;
+      }
+      & .Btn-modal{
+        margin-top: 1rem;
+        width: 100px;
+      }
+    }
+  }
+}
+
+.margin-top{
+  margin-top: 1rem;
 }
 
 .Sumate{

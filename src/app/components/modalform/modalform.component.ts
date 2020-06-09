@@ -158,7 +158,7 @@ export class ModalformComponent implements OnInit {
       ]],
       patente: ['', [
         Validators.maxLength(6),
-        Validators.pattern('^([a-zA-Z0-9]{2})([a-zA-Z0-9]{2})([0-9]{2})$')
+        Validators.pattern('^([a-zA-Z0-9]{2,3})([a-zA-Z0-9]{2})([0-9]{0,2})$')
       ]],
       moredata: ['', Validators.maxLength(500)],
       donacion: ['No'],

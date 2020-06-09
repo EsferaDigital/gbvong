@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegistroModel } from '../models/registro.model';
 import {AngularFirestore, DocumentReference} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -9,11 +10,15 @@ import {AngularFirestore, DocumentReference} from '@angular/fire/firestore';
 })
 export class DatosService {
   private coleccion = 'registros';
+  private recuperadosRef = 'recuperados'
+  recuperados: Observable<any> ;
 
   constructor(
     private db: AngularFirestore,
     private http: HttpClient
-    ) { }
+    ) {
+      this.recuperados = this.db.collection(this.recuperadosRef).valueChanges();
+    }
 
   // Para obtener Regiones y comunas (datos en local)
   getUbicacion(){
@@ -22,6 +27,10 @@ export class DatosService {
 
   postRegistro(registro: RegistroModel): Promise<DocumentReference> {
     return this.db.collection(this.coleccion).add(registro);
+  }
+
+  getRecuperados(){
+    return this.recuperados;
   }
 
   // async getPatente(patenteForm: any){

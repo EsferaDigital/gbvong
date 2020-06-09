@@ -1,6 +1,7 @@
 <main class="Main">
   <gb-modalhistoria (cerrarhistoria)="ocultarHistoria($event)" *ngIf="verhistoria"></gb-modalhistoria>
-  <gb-modalform (closeform)="ocultarFormulario($event)" *ngIf="verformulario"></gb-modalform>
+  <gb-form-victimas (cierraformvictimas)="ocultarFormVictimas($event)" *ngIf="verformvictimas"></gb-form-victimas>
+  <gb-form-miembros (cierraformmiembros)="ocultarFormMiembros($event)" *ngIf="verformmiembros"></gb-form-miembros>
   <div class="Banner">
     <div class="Container-grid">
       <h1 class="Titulo">Grupo GBV</h1>
@@ -16,6 +17,10 @@
       <div class="Card-text">
         <p class="Parrafo">El grupo GBV es una organización no gubernamental de desarrollo sin fines de lucro, ayuda a las víctimas a recuperar sus vehículos robados en terreno.</p>
         <p class="Parrafo">Operamos desde el año 2013 aunque, oficialmente, el grupo es fundado en el año 2014.</p>
+      </div>
+      <div class="Resultados">
+        <h3 class="Resultados-title">Nuestros resultados</h3>
+        <p class="Parrafo Resultados-recuperados">A la fecha hemos recuperado <span>{{recuperados}}</span> vehículos</p>
       </div>
     </div>
     <div class="Box-btn">
@@ -45,22 +50,44 @@
       </div>
     </div>
   </section>
+  <section class="Denuncia" id="denuncia">
+    <div class="Box-text">
+      <h2 class="Titulo-2">Denuncia</h2>
+    </div>
+    <div class="Box-text">
+      <div class="Card-text margin-top">
+        <p class="Parrafo parrafo-denuncia">
+          Si has sido víctima del robo de tu auto, moto, camión, grua o cualquier otro vehículo motorizado, te recomendamos siempre que hagas la denuncia correspondiente a Carabineros de Chile llamando al 133 o a la Policia de Investigaciones llamando al 134.
+        </p>
+        <p class="Parrafo parrafo-denuncia">
+          Además puedes llenar nuestro formulario de denuncias para que te ayudemos a buscar y recuperar tu vehículo.
+        </p>
+        <p class="Parrafo parrafo-denuncia">Contamos con miles de voluntarios dispuestos a colaborar en la búsqueda de tu vehículo. Llevamos un registro privado de denuncias que nos ayudan en el éxito de nuestra misión.</p>
+      </div>
+    </div>
+    <div class="Box-text">
+      <div class="Card-text">
+        <p class="Parrafo">Accede a nuestro formulario de denuncias haciendo click sobre el boton.</p>
+        <button class="Btn-modal" (click)="mostrarFormVictimas()">Denuncia</button>
+      </div>
+    </div>
+  </section>
   <section class="Sumate" id="sumate">
     <div class="Box-text">
       <h2 class="Titulo-2">Súmate</h2>
     </div>
     <div class="Box-text">
       <div class="Card-text">
-        <p class="Parrafo">Si quieres ser parte de la red de ayuda del Grupo Búsqueda de Vehículos, como víctima, como colaborador o solamente participar como integrante de alguna institución, llena nuestro formulario que se encuentra más abajo. Lo anterior es para mantener un registro de la cantidad de personas a nivel nacional que se encuentran participando, además nos permitirá mantener un sistema de filtros debido a la información sensible que se maneja como ONG de ayuda a las víctima del delito de robo de vehículo.</p>
-        <p class="Parrafo">Esperamos tu comprensión y te recordamos que es importante llenar los campos solicitados dentro del formulario, si eres víctima y tienes un auto para reportarnos, en el mismo formulario te damos la opción de incorporarlo.</p>
-        <p class="Parrafo">Una vez recepcionada la información se realizará una revisión de los antecedentes y se te informará sobre tu ingreso, en el caso de existir problemas también se te avisara el motivo por el cual no puedes ingresar.</p>
+        <p class="Parrafo">Si quieres ser parte de la red de ayuda del Grupo Búsqueda de Vehículos, como miembro activo de nuestra ONG, llena el formulario que se encuentra más abajo. Lo anterior es para mantener un registro de la cantidad de personas a nivel nacional que se encuentran participando, además nos permitirá mantener un sistema de filtros debido a la información sensible que se maneja como ONG de ayuda a las víctimas del delito de robo de vehículos.</p>
+        <p class="Parrafo">Esperamos tu comprensión y te recordamos que es importante llenar los campos solicitados dentro del formulario.</p>
+        <p class="Parrafo">Una vez recepcionada la información se realizará una revisión de los antecedentes y se te informará sobre tu ingreso como miembro, en el caso de existir problemas también se te avisara el motivo por el cual no puedes ingresar.</p>
       </div>
     </div>
     <div class="Box-text">
       <div class="Card-text">
         <h3 class="Titulo-3">Únete</h3>
         <p class="Parrafo">Accede a nuestro formulario de inscripción haciendo click sobre el boton.</p>
-        <button class="Btn-modal" (click)="mostrarFormulario()">Formulario</button>
+        <button class="Btn-modal" (click)="mostrarFormMiembros()">Únete</button>
       </div>
       <div class="Card-text">
         <h3 class="Titulo-3">Síguenos</h3>

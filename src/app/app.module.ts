@@ -16,6 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { FormMiembrosComponent } from './components/form-miembros/form-miembros.component';
+import { FormVictimasComponent } from './components/form-victimas/form-victimas.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { environment } from '../environments/environment';
     FooterComponent,
     MainComponent,
     ModalformComponent,
-    ModalhistoriaComponent
+    ModalhistoriaComponent,
+    FormMiembrosComponent,
+    FormVictimasComponent
   ],
   imports: [
     BrowserModule,
