@@ -1,12 +1,60 @@
 <div #modalM [ngClass]="animamodal" class="ModalH scroll-item">
   <div class="Modal-content">
-    <form class="Formulario">
-      <h3>FORMULARIO DE DENUNCIA</h3>
-      <p>Formulario de denuncia para víctimas de robo</p>
+    <form class="Formulario"
+          [formGroup]="form"
+          (ngSubmit)="enviar()">
+      <h3>FORMULARIO DE INSCRIPCIOM</h3>
+      <p>Para solicitar tu inscripción como miembro de nuestra ONG</p>
 
       <div class="Formulario-item">
-        <div class="Nombres">
+        <h4>Te inscribes cómo?</h4>
+        <div class="Tipo">
+
+          <div class="Tipo-item">
+            <input type="radio"
+                   id="civil"
+                   formControlName="tipo"
+                   value="Civil">
+            <label for="civil">Civil</label>
+          </div>
+
+          <div class="Tipo-item">
+            <input type="radio"
+                   id="ffaa"
+                   formControlName="tipo"
+                   value="Miembro de las FFAA">
+            <label for="ffaa">Miembro de las FFAA</label>
+          </div>
+
+          <div class="Tipo-item">
+            <input type="radio"
+                   formControlName="tipo"
+                   (input)="selectTipo($event.target.value)"
+                   value="otro">
+            <label for="otro">Otra institución</label>
+          </div>
+
+          <div class="Tipo-item">
+            <input type="text"
+                   *ngIf="mostrarTipo"
+                   class="slide-down"
+                   formControlName="tipo"
+                   (change)="addValueTipo($event)"
+                   placeholder="Especifique cual">
+          </div>
+
+          <small class="text-danger">
+            Seleccione una opción
+          </small>
+
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <h4>Nombre Completo</h4>
+        <div class="Nombre">
           <input type="text"
+                 formControlName="nombre"
                  placeholder="Nombre completo">
           <small class="text-danger">
             Ingrese al menos 10 caracteres
@@ -15,21 +63,28 @@
       </div>
 
       <div class="Formulario-item">
+        <h4>RUT</h4>
+
         <div class="Rut">
           <input type="text"
+                 formControlName="rut"
                  placeholder="12.345.567-8">
           <small class="text-danger">
             Ingrese un RUT válido
           </small>
         </div>
+
       </div>
 
       <div class="Formulario-item">
-        <div class=docnumber>
-          <div class="docnumber-img">
+        <h4>Número de documento</h4>
+        <div class="Docnumber">
+
+          <div class="Docnumber-img">
             <img src="../../../assets/img/numero-documento.png" alt="Número de Documento">
           </div>
           <input type="number"
+                 formControlName="docnumber"
                  placeholder="Ingresa el tuyo">
           <small class="text-danger">
             Ingrese un número de documento
@@ -38,18 +93,25 @@
       </div>
 
       <div class="Formulario-item">
+        <h4>Teléfono</h4>
         <div class="Phone">
+
           <input type="number"
+                 formControlName="phone"
                  placeholder="912345678">
           <small class="text-danger">
             Ingrese un número válido
           </small>
+
         </div>
       </div>
 
       <div class="Formulario-item">
+        <h4>Correo electónico</h4>
         <div class="Mail">
+
           <input type="email"
+                 formControlName="mail"
                  placeholder="Escriba su correo">
           <small class="text-danger">
             Ingrese un correo válido
@@ -58,18 +120,62 @@
       </div>
 
       <div class="Formulario-item">
-        <h2>Dirección (Región, comuna, calle)</h2>
-        <div class="Formulario-item-direccion">
+        <h4>Dirección (Región, comuna, calle)</h4>
+        <div class="Direccion">
+
           <div class="Region">
-            <select name="" id=""></select>
+            <select formControlName="region"
+                    [class.is-invalid]="regionNoValida"
+                    [disabled]="direccion.length === 0"
+                    (change)="changeRegion($event.target.value)">
+              <option *ngFor="let i of direccion">
+                {{i.region}}
+              </option>
+            </select>
+            <small *ngIf="regionNoValida" class="text-danger">
+              Seleccione una Region
+            </small>
           </div>
+
+          <div class="Comunas slide-down"
+               *ngIf="mostrarComuna">
+            <select formControlName="comuna"
+                    [class.is-invalid]="comunaNoValida">
+              <option *ngFor="let comuna of comunas">
+                {{comuna}}
+              </option>
+            </select>
+            <small *ngIf="comunaNoValida" class="text-danger">
+              Seleccione una Comuna
+            </small>
+          </div>
+
+          <div class="Calle">
+            <input type="text"
+                   formControlName="calle"
+                   placeholder="Calle #1234"
+                   [class.is-invalid]="calleNoValida">
+            <small *ngIf="calleNoValida" class="text-danger">
+              Escriba una dirección
+            </small>
+          </div>
+
         </div>
       </div>
 
+      <div class="Formulario-btn">
+        <small *ngIf="!form.valid">
+          El botón estará bloqueado hasta que llene el formulario correctamente
+        </small>
+        <button [disabled]="!form.valid"
+                type="submit">
+          Enviar
+        </button>
+      </div>
 
     </form>
   </div>
-  <button (click)="closeModal(modalM)" class="closeModal">
+  <button (click)="closeModal(modalM)" class="btn-close-modal">
     <i class="fas fa-times"></i>
   </button>
 </div>

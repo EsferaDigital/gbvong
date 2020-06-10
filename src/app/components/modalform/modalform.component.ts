@@ -33,7 +33,7 @@ export class ModalformComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.datosService.getUbicacion()
+    this.datosService.getDireccion()
       .subscribe( (ubicacion: any) => {
         this.ubicacion = ubicacion;
 

@@ -21,7 +21,7 @@ export class DatosService {
     }
 
   // Para obtener Regiones y comunas (datos en local)
-  getUbicacion(){
+  getDireccion(){
     return this.http.get('../../assets/docs/comunas.json');
   }
 

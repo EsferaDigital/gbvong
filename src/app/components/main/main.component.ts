@@ -28,7 +28,6 @@ export class MainComponent implements OnInit{
   }
 
   mostrarFormMiembros(){
-    console.log('entra')
     this.verformmiembros = true;
   }
 
