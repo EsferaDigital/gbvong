@@ -1,4 +1,4 @@
-<div #modalM [ngClass]="animamodal" class="ModalH scroll-item">
+<div #modalM [ngClass]="animamodal" class="Modal">
   <div class="Modal-content">
     <form class="Formulario"
           [formGroup]="form"
@@ -64,7 +64,6 @@
 
       <div class="Formulario-item">
         <h4>RUT</h4>
-
         <div class="Rut">
           <input type="text"
                  formControlName="rut"
@@ -73,7 +72,6 @@
             Ingrese un RUT válido
           </small>
         </div>
-
       </div>
 
       <div class="Formulario-item">
@@ -95,14 +93,12 @@
       <div class="Formulario-item">
         <h4>Teléfono</h4>
         <div class="Phone">
-
           <input type="number"
                  formControlName="phone"
                  placeholder="912345678">
           <small class="text-danger">
-            Ingrese un número válido
+            Ingrese un teléfono válido
           </small>
-
         </div>
       </div>
 

@@ -7,12 +7,12 @@ import { DatosService } from '../../services/datos.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit{
-  recuperados: number
+  recuperados = 1350
 
-  verhistoria: boolean;
+  verhistoria: boolean
   // verormulario por defecto en true para mostrarlo mientras lo diseño
   // tslint:disable-next-line: no-inferrable-types
-  verformvictimas: boolean
+  verformvictimas = true
 
   verformmiembros: boolean
 
@@ -23,7 +23,7 @@ export class MainComponent implements OnInit{
 
   ngOnInit(){
     this.datosService.getRecuperados().subscribe(resp => {
-      this.recuperados = resp[0].total || 1350;
+      this.recuperados = resp[0].total;
     })
   }
 

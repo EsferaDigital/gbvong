@@ -26,6 +26,18 @@
     height: 85vh;
     margin: auto;
     background-color: color(bg);
+    overflow-y: scroll;
+    & .Box-text:nth-child(1){
+      width: 100%;
+      background-color: color(secondary);
+    }
+    & .Box-text:nth-child(2){
+      padding: 2rem;
+      & p{
+        color: color(shark);
+        padding: .7rem 0;
+      }
+    }
   }
   &.zoom-in{
     animation: zoomIn .5s forwards;
@@ -51,54 +63,6 @@
   }
 }
 
-.ModalH{
-  position: fixed;
-  display: flex;
-  top: 0;
-  z-index: capa(capa10);
-  width: 100%;
-  height: 100vh;
-  background-color: $fondo-transparente;
-  transform: scale3d(0,0,0);
-  &-item{
-    width: 92%;
-    max-width: $ancho-maximo;
-    height: 85vh;
-    margin: auto;
-    background-color: color(bg);
-    overflow-y: scroll;
-    & .Box-text:nth-child(1){
-      width: 100%;
-      background-color: color(secondary);
-    }
-    & .Box-text:nth-child(2){
-      padding: 2rem;
-      & p{
-        color: color(shark);
-        padding: .7rem 0;
-      }
-    }
-  }
-  &.zoom-in{
-    animation: zoomin .5s forwards;
-    @keyframes zoomin{
-      to{
-        transform: scale3d(1,1,1);
-      }
-    }
-  }
-  &.zoom-out{
-    animation: zoomout .5s forwards;
-    @keyframes zoomout{
-      from{
-        transform: scale3d(1,1,1);
-      }
-      to{
-        transform: scale3d(0,0,0);
-      }
-    }
-  }
-}
 
 .Modal-content{
   -webkit-overflow-scrolling: touch;
@@ -123,21 +87,21 @@
   }
 }
 
-.scroll-iframe{
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0 auto;
-  overflow-y: auto;
-  & iframe{
-    width: 100%;
-    height: 100%;
-  }
-}
+// .scroll-iframe{
+//   -webkit-overflow-scrolling: touch;
+//   width: 100%;
+//   height: 100%;
+//   padding: 0;
+//   margin: 0 auto;
+//   overflow-y: auto;
+//   & iframe{
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
 
-.scroll-item{
-  &::-webkit-scrollbar{
-    width: 12px;
-  }
-}
+// .scroll-item{
+//   &::-webkit-scrollbar{
+//     width: 12px;
+//   }
+// }

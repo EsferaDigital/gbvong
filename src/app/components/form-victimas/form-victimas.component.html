@@ -1,6 +1,236 @@
-<div #modalV [ngClass]="animamodal" class="ModalH scroll-item">
+<div #modalV [ngClass]="animamodal" class="Modal">
   <div class="Modal-content">
-    <h2>Formulario de victimas</h2>
+    <form class="Formulario">
+      <h3>FORMULARIO DE DENUNCIA</h3>
+      <p>Para registrar tu denuncia de robo de vehículo</p>
+      <p>Los campos marcados con * son obligatorios</p>
+
+      <div class="Formulario-item">
+        <h4>Nombre Completo<span>*</span></h4>
+        <div class="Nombre">
+          <input type="text"
+                 placeholder="Nombre completo">
+          <small class="text-danger">
+            Ingrese al menos 10 caracteres
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <h4>RUT<span>*</span></h4>
+        <div class="Rut">
+          <input type="text"
+                 placeholder="12.345.567-8">
+          <small class="text-danger">
+            Ingrese un RUT válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <h4>Número de documento<span>*</span></h4>
+        <div class="Docnumber">
+
+          <div class="Docnumber-img">
+            <img src="../../../assets/img/numero-documento.png" alt="Número de Documento">
+          </div>
+          <input type="number"
+                 placeholder="Ingresa el tuyo">
+          <small class="text-danger">
+            Ingrese un número de documento
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <h4>Correo electónico<span>*</span></h4>
+        <div class="Mail">
+          <input type="email"
+                 placeholder="Escriba su correo">
+          <small class="text-danger">
+            Ingrese un correo válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <h4>Teléfono <span>*</span></h4>
+        <div class="Phone">
+          <input type="number"
+                 placeholder="912345678">
+          <small class="text-danger">
+            Ingrese un teléfono válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <h4>Teléfono alternativo</h4>
+        <div class="Phone">
+          <input type="number"
+                 placeholder="912345678">
+          <small class="text-danger">
+            Ingrese un teléfono válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Vehiculo">
+          <h3>Datos sobre el vehículo robado</h3>
+
+          <div class="Vehiculo-item">
+            <h4>Tipo de vehículo (moto, auto, camion, etc)<span>*</span></h4>
+            <div class="card-data">
+              <input type="texto"
+                    placeholder="auto">
+              <small class="text-danger">
+                Ingrese al menos 4 caracteres
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Marca<span>*</span></h4>
+            <div class="card-data">
+              <input type="texto">
+              <small class="text-danger">
+                Máximo 12 caracteres
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Modelo<span>*</span></h4>
+            <div class="card-data">
+              <input type="texto">
+              <small class="text-danger">
+                Máximo 12 caracteres
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Color<span>*</span></h4>
+            <div class="card-data">
+              <input type="texto">
+              <small class="text-danger">
+                Máximo 10 caracteres
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Año del vehículo<span>*</span></h4>
+            <div class="card-data">
+              <input type="number"
+                     placeholder="2020">
+              <small class="text-danger">
+                Ingrese un año válido
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Patente<span>*</span></h4>
+            <div class="card-data">
+              <input type="text"
+                     placeholder="ABCD12">
+              <small class="text-danger">
+                Ingrese una patente válida
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Número de chasis</h4>
+            <div class="card-data">
+              <input type="text"
+                     placeholder="Ingresa el tuyo">
+              <small class="text-danger">
+                Máximo 17 caracteres
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Número de motor</h4>
+            <div class="card-data">
+              <input type="text"
+                     placeholder="Ingresa el tuyo">
+              <small class="text-danger">
+                Máximo 17 caracteres
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Dirección del robo</h4>
+            <div class="card-data">
+              <input type="text"
+                     placeholder="Comuna y esquina más cercana">
+              <small class="text-danger">
+                Máximo 50 caracteres
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Más datos que pudieras añadir (te quedan caracteres)</h4>
+            <div class="card-data">
+              <textarea placeholder="Algún detalle que nos ayude a identificar tu vehículo"></textarea>
+              <small class="text-danger">
+                Has excedido el número de caracteres
+              </small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Donacion">
+          <h3>Si encontramos tu vehículo</h3>
+          <p>¿Estarías dispuesto a hacer una donación a nuestra ONG?</p>
+
+          <div class="Donacion-item">
+            <input type="radio"
+                   value="si"
+                   id="si">
+            <label for="si">Si</label>
+          </div>
+
+          <div class="Donacion-item">
+            <input type="radio"
+                   value="no"
+                   id="no">
+            <label for="no">No</label>
+          </div>
+
+          <div class="Donacion-item">
+            <input type="radio"
+                   value="talvez"
+                   id="talvez">
+            <label for="talvez">Tal vez</label>
+          </div>
+
+          <div class="Donacion-item">
+            <h4>¿Cuánto podrías donar?</h4>
+            <input type="number"
+                   placeholder="5000">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="Formulario-btn">
+        <small class="text-center">
+          El botón estará bloqueado hasta que llene el formulario correctamente
+        </small>
+        <button type="submit">ENVIAR</button>
+      </div>
+
+    </form>
   </div>
 
   <button (click)="closeModal(modalV)" class="btn-close-modal">

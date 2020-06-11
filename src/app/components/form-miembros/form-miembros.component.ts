@@ -23,10 +23,10 @@ export class FormMiembrosComponent implements OnInit {
     private fb: FormBuilder,
     private datosService: DatosService
   ) {
-    this.cierraformmiembros = new EventEmitter(),
-    this.animamodal = 'zoom-in',
-    this.crearFormulario();
-    this.miembro = new MiembroModel('',new Date(),'','',0,0,0,'','ROLE_USER','','','','')
+    this.cierraformmiembros = new EventEmitter()
+    this.animamodal = 'zoom-in'
+    this.crearFormulario()
+    this.miembro = new MiembroModel('',new Date(),'','','',0,0,'','ROLE_USER','','','','')
   }
 
   ngOnInit(): void {

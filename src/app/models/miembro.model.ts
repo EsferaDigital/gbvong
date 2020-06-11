@@ -3,10 +3,10 @@
 export class MiembroModel{
   constructor(
     public id: string,
-    public registroDate: Date,
+    public registrodate: Date,
     public tipo: string,
     public nombre: string,
-    public rut: number,
+    public rut: string,
     public docnumber: number,
     public phone: number,
     public mail: string,
