@@ -2,7 +2,6 @@
 // Al definir propiedades en el constructor evito tener que definirlas, luego pasarles un dato y luego inicializarlas o asignarles un valor. Por eso se recomienda hacerlo de esta manera
 export class MiembroModel{
   constructor(
-    public id: string,
     public registrodate: Date,
     public tipo: string,
     public nombre: string,

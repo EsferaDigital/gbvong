@@ -4,13 +4,13 @@
   max-width: 700px;
   color: color(bg);
   background-color: color(primary);
-  & h3{
+  & h2{
     text-align: center;
     color: color(bg);
     background-color: color(secondary);
     padding: 1rem;
     letter-spacing: 8px;
-    font-size: var(--font-size-titulo-3);
+    font-size: var(--font-size-titulo-2);
   }
   & p{
     font-family: $fuente-secundaria;
@@ -19,6 +19,11 @@
     width: 90%;
     margin: auto;
     // border: 2px solid red;
+  }
+  & p:nth-child(3){
+    // border: 2px solid pink;
+    margin-bottom: - 1rem;
+    padding-top: 0;
   }
   & label, select, option{
     width: 100%;
@@ -40,29 +45,108 @@
     border: 2px solid color(secondary);
     margin: 1rem auto;
     padding: 1rem;
+    & h4{
+      font-weight: 400;
+      & span{
+        margin-left: 10px;
+        color: color(success);
+      }
+    }
     & .Tipo{
-      border: 2px solid red;
+      padding: 1rem 0;
+      &-item{
+        font-family: $fuente-secundaria;
+        // border: 1px solid blue;
+        & input[type="radio"]{
+          display: none;
+          &:checked + label:before{
+            background-color: color(success);
+          }
+        }
+        & .input-seleccionado:before{
+          background-color: color(success);
+        }
+        & .input-text{
+          margin-top: 5px;
+          width: 100%;
+        }
+        & label{
+          display: inline-block;
+          position: relative;
+          color: white;
+          padding: 5px 15px 5px 40px;
+          // border: 1px solid blue;
+          cursor: pointer;
+          &:before{
+            content: '';
+            width: 17px;
+            height: 17px;
+            display: inline-block;
+            background: none;
+            border: 3px solid color(success);
+            border-radius: 50%;
+            position: absolute;
+            left: 10px;
+            top: 5px;
+          }
+          &:hover{
+            background-color: color(fondo);
+          }
+        }
+      }
     }
-    & .Nombre{
-      border: 2px solid green;
-    }
-    & .Rut{
-      border: 2px solid blue;
-    }
+    // & .Nombre{
+    //   border: 2px solid green;
+    // }
+    // & .Rut{
+    //   border: 2px solid blue;
+    // }
     & .Docnumber{
       width: 100%; // se puede eliminar esta propiedad
       &-img{
         width: 50%;
+        // border: 2px solid red;
+        margin: .7rem 0;
         & img{
           width: 100%;
         }
       }
     }
+    & .Direccion{
+      display: grid;
+      grid-template-areas: "region"
+                           "comuna"
+                           "calle";
+      grid-template-columns: 1fr;
+      grid-gap: .5rem;
+      @include mq(mdl){
+        grid-template-areas: "region comuna"
+                             "calle calle";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr minmax(0%, max-content);
+      }
+      & .Region{
+        grid-area: region;
+      }
+      & .Comuna{
+        grid-area: comuna;
+      }
+      & .Calle{
+        grid-area: calle;
+      }
+    }
   }
   &-btn{
-    width: 95%;
+    width: 90%;
     margin: auto;
     padding-bottom: 5rem;
+    & small{
+      display: block;
+      text-align: center;
+      width: 90%;
+      // border: 2px solid red;
+      margin: -.5rem auto .5rem auto;
+    }
     & button[type="submit"]{
       @include boton(color(success));
       color: color(bg);
@@ -76,44 +160,58 @@
   }
 }
 
-.Motivos{
-  // border: 2px solid red;
-  padding: 1rem 0;
-  &-item{
-    font-family: $fuente-secundaria;
-    & input[type="radio"]{
-      display: none;
-      &:checked + label:before{
-        background-color: color(success);
-      }
-    }
-    & label{
-      display: inline-block;
-      position: relative;
-      color: white;
-      padding: 5px 15px 5px 51px;
-      // border: 1px solid blue;
-      cursor: pointer;
-      &:before{
-        content: '';
-        width: 17px;
-        height: 17px;
-        display: inline-block;
-        background: none;
-        border: 3px solid color(success);
-        border-radius: 50%;
-        position: absolute;
-        left: 17px;
-        top: 5px;
-      }
-      &:hover{
-        background-color: color(fondo);
-      }
-    }
-  }
+.link-alert{
+  text-decoration: none;
+  color: #1F5764 !important;
 }
 
-.form-motivos{
-  padding: 0;
-  margin-top: 1.5rem;
-}
+// .Tipo{
+//   // border: 2px solid red;
+//   padding: 1rem 0;
+//   &-item{
+//     font-family: $fuente-secundaria;
+//     // border: 1px solid blue;
+//     & input[type="radio"]{
+//       display: none;
+//       &:checked + label:before{
+//         background-color: color(success);
+//       }
+//     }
+//     & .input-seleccionado:before{
+//       background-color: color(success);
+//     }
+//     & .input-text{
+//       margin-left: 15px;
+//       margin-top: 5px;
+//       width: calc(100% - 15px);
+//     }
+//     & label{
+//       display: inline-block;
+//       position: relative;
+//       color: white;
+//       padding: 5px 15px 5px 51px;
+//       // border: 1px solid blue;
+//       cursor: pointer;
+//       &:before{
+//         content: '';
+//         width: 17px;
+//         height: 17px;
+//         display: inline-block;
+//         background: none;
+//         border: 3px solid color(success);
+//         border-radius: 50%;
+//         position: absolute;
+//         left: 17px;
+//         top: 5px;
+//       }
+//       &:hover{
+//         background-color: color(fondo);
+//       }
+//     }
+//   }
+// }
+
+// .form-motivos{
+//   padding: 0;
+//   margin-top: 1.5rem;
+// }

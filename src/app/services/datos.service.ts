@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { RegistroModel } from '../models/registro.model';
 import {AngularFirestore, DocumentReference} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { MiembroModel } from '../models/miembro.model';
 
 
 @Injectable({
@@ -11,6 +12,7 @@ import { Observable } from 'rxjs';
 export class DatosService {
   private coleccion = 'registros';
   private recuperadosRef = 'recuperados'
+  private miembrosRef = 'miembros'
   recuperados: Observable<any> ;
 
   constructor(
@@ -27,6 +29,10 @@ export class DatosService {
 
   postRegistro(registro: RegistroModel): Promise<DocumentReference> {
     return this.db.collection(this.coleccion).add(registro);
+  }
+
+  postMiembro(miembro: MiembroModel){
+    return this.db.collection(this.miembrosRef).add(miembro);
   }
 
   getRecuperados(){

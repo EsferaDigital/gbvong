@@ -3,18 +3,20 @@
     <form class="Formulario"
           [formGroup]="form"
           (ngSubmit)="enviar()">
-      <h3>FORMULARIO DE INSCRIPCIOM</h3>
+      <h2>FORMULARIO DE INSCRIPCION</h2>
       <p>Para solicitar tu inscripción como miembro de nuestra ONG</p>
+      <p>Los campos marcados con * son obligatorios</p>
 
       <div class="Formulario-item">
-        <h4>Te inscribes cómo?</h4>
+        <h4>Te inscribes cómo?<span>*</span></h4>
         <div class="Tipo">
 
           <div class="Tipo-item">
             <input type="radio"
                    id="civil"
                    formControlName="tipo"
-                   value="Civil">
+                   (input)="selectTipo($event.target.value)"
+                   value="civil">
             <label for="civil">Civil</label>
           </div>
 
@@ -22,7 +24,8 @@
             <input type="radio"
                    id="ffaa"
                    formControlName="tipo"
-                   value="Miembro de las FFAA">
+                   (input)="selectTipo($event.target.value)"
+                   value="ffaa">
             <label for="ffaa">Miembro de las FFAA</label>
           </div>
 
@@ -30,93 +33,105 @@
             <input type="radio"
                    formControlName="tipo"
                    (input)="selectTipo($event.target.value)"
-                   value="otro">
-            <label for="otro">Otra institución</label>
+                   value="n">
+            <label (click)="selectTipo('n')"
+                   [class]="seleccionado"
+                   for="n">Otra institución</label>
           </div>
 
           <div class="Tipo-item">
             <input type="text"
                    *ngIf="mostrarTipo"
-                   class="slide-down"
+                   class="slide-down input-text"
                    formControlName="tipo"
-                   (change)="addValueTipo($event)"
                    placeholder="Especifique cual">
           </div>
 
-          <small class="text-danger">
-            Seleccione una opción
+          <small *ngIf="tipoNoValido"
+                 class="text-danger">
+            Especifique cual
           </small>
 
         </div>
       </div>
 
       <div class="Formulario-item">
-        <h4>Nombre Completo</h4>
+        <h4>Nombre Completo<span>*</span></h4>
         <div class="Nombre">
           <input type="text"
                  formControlName="nombre"
+                 [class.is-invalid]="nombreNoValido"
                  placeholder="Nombre completo">
-          <small class="text-danger">
+          <small *ngIf="nombreNoValido"
+                 class="text-danger">
             Ingrese al menos 10 caracteres
           </small>
         </div>
       </div>
 
       <div class="Formulario-item">
-        <h4>RUT</h4>
+        <h4>RUT<span>*</span></h4>
         <div class="Rut">
           <input type="text"
                  formControlName="rut"
-                 placeholder="12.345.567-8">
-          <small class="text-danger">
+                 placeholder="Rut"
+                 [class.is-invalid]="rutNoValido">
+          <small *ngIf="rutNoValido"
+                 class="text-danger">
             Ingrese un RUT válido
           </small>
         </div>
       </div>
 
       <div class="Formulario-item">
-        <h4>Número de documento</h4>
+        <h4>Número de documento<span>*</span></h4>
         <div class="Docnumber">
 
           <div class="Docnumber-img">
             <img src="../../../assets/img/numero-documento.png" alt="Número de Documento">
           </div>
-          <input type="number"
+          <input type="text"
                  formControlName="docnumber"
-                 placeholder="Ingresa el tuyo">
-          <small class="text-danger">
-            Ingrese un número de documento
+                 placeholder="Ingresa el tuyo"
+                 [class.is-invalid]="docnumberNoValido">
+          <small *ngIf="docnumberNoValido"
+                 class="text-danger">
+            Ingrese su número de documento
           </small>
         </div>
       </div>
 
       <div class="Formulario-item">
-        <h4>Teléfono</h4>
+        <h4>Teléfono<span>*</span></h4>
         <div class="Phone">
           <input type="number"
                  formControlName="phone"
-                 placeholder="912345678">
-          <small class="text-danger">
+                 placeholder="12345678"
+                 [class.is-invalid]="phoneNoValido">
+          <small *ngIf="phoneNoValido"
+                 class="text-danger">
             Ingrese un teléfono válido
           </small>
         </div>
       </div>
 
       <div class="Formulario-item">
-        <h4>Correo electónico</h4>
+        <h4>Correo electónico<span>*</span></h4>
         <div class="Mail">
 
           <input type="email"
                  formControlName="mail"
-                 placeholder="Escriba su correo">
-          <small class="text-danger">
+                 placeholder="Escriba su correo"
+                 [class.is-invalid]="mailNoValido">
+          <small *ngIf="mailNoValido"
+                 class="text-danger">
             Ingrese un correo válido
           </small>
         </div>
       </div>
 
       <div class="Formulario-item">
-        <h4>Dirección (Región, comuna, calle)</h4>
+        <h4>Dirección (Región, comuna, calle)<span>*</span></h4>
         <div class="Direccion">
 
           <div class="Region">
@@ -133,7 +148,7 @@
             </small>
           </div>
 
-          <div class="Comunas slide-down"
+          <div class="Comuna slide-down"
                *ngIf="mostrarComuna">
             <select formControlName="comuna"
                     [class.is-invalid]="comunaNoValida">
@@ -149,7 +164,7 @@
           <div class="Calle">
             <input type="text"
                    formControlName="calle"
-                   placeholder="Calle #1234"
+                   placeholder="Calle #"
                    [class.is-invalid]="calleNoValida">
             <small *ngIf="calleNoValida" class="text-danger">
               Escriba una dirección
@@ -163,8 +178,8 @@
         <small *ngIf="!form.valid">
           El botón estará bloqueado hasta que llene el formulario correctamente
         </small>
-        <button [disabled]="!form.valid"
-                type="submit">
+        <button type="submit"
+                [disabled]="!form.valid">
           Enviar
         </button>
       </div>
