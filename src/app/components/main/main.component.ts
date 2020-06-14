@@ -12,9 +12,9 @@ export class MainComponent implements OnInit{
   verhistoria: boolean
   // verormulario por defecto en true para mostrarlo mientras lo diseño
   // tslint:disable-next-line: no-inferrable-types
-  verformvictimas: boolean
+  verformvictimas = true
 
-  verformmiembros = true
+  verformmiembros: boolean
 
 
   // el valor de modal debe ser = al valor de lo que recibamos del modal historia o modal formulario
