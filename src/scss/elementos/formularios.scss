@@ -135,6 +135,31 @@
         grid-area: calle;
       }
     }
+    & .Vehiculo{
+      border: 2px solid red;
+      & h3{
+        text-align: center;
+        color: color(bg);
+        background-color: color(secondary);
+        padding: 1rem;
+        letter-spacing: 8px;
+        font-size: var(--font-size-titulo-3);
+        text-transform: uppercase;
+      }
+      &-item{
+        border: 2px solid blue;
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+    }
+    & .Donacion{
+      border: 2px solid red;
+    }
   }
   &-btn{
     width: 90%;
@@ -163,6 +188,11 @@
 .link-alert{
   text-decoration: none;
   color: #1F5764 !important;
+}
+
+.is-invalid{
+  border: 2px solid #C0362C;
+  color: #C0362C;
 }
 
 // .Tipo{

@@ -1,6 +1,5 @@
 export class VictimaModel{
   constructor(
-    public id: string,
     public registrodate: Date,
     public nombre: string,
     public rut: string,
@@ -16,10 +15,10 @@ export class VictimaModel{
     public patente: string,
     public chasisnumber: string,
     public motornumber: string,
-    public addresstheft: string,
+    public fecharobo: string,
     public moredata: string,
-    public recovered: boolean,
-    public adressrecovered: Date,
+    public recuperado: boolean,
+    public fecharecuperado: Date,
     public donacion: string,
     public montodonacion: number
   ){}

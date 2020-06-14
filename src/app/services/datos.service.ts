@@ -4,6 +4,7 @@ import { RegistroModel } from '../models/registro.model';
 import {AngularFirestore, DocumentReference} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { MiembroModel } from '../models/miembro.model';
+import { VictimaModel } from '../models/victima.model';
 
 
 @Injectable({
@@ -13,6 +14,7 @@ export class DatosService {
   private coleccion = 'registros';
   private recuperadosRef = 'recuperados'
   private miembrosRef = 'miembros'
+  private victimasRef = 'victimas'
   recuperados: Observable<any> ;
 
   constructor(
@@ -33,6 +35,10 @@ export class DatosService {
 
   postMiembro(miembro: MiembroModel){
     return this.db.collection(this.miembrosRef).add(miembro);
+  }
+
+  postVictima(victima: VictimaModel){
+    return this.db.collection(this.victimasRef).add(victima)
   }
 
   getRecuperados(){

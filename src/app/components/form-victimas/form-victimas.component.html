@@ -1,6 +1,8 @@
 <div #modalV [ngClass]="animamodal" class="Modal">
   <div class="Modal-content">
-    <form class="Formulario">
+    <form class="Formulario"
+          [formGroup]="form"
+          (ngSubmit)="enviar()">
       <h2>FORMULARIO DE DENUNCIA</h2>
       <p>Para registrar tu denuncia de robo de vehículo</p>
       <p>Los campos marcados con * son obligatorios</p>
@@ -9,8 +11,11 @@
         <h4>Nombre Completo<span>*</span></h4>
         <div class="Nombre">
           <input type="text"
+                 formControlName="nombre"
+                 [class.is-invalid]="nombreNoValido"
                  placeholder="Nombre completo">
-          <small class="text-danger">
+          <small *ngIf="nombreNoValido"
+                 class="text-danger">
             Ingrese al menos 10 caracteres
           </small>
         </div>
@@ -20,8 +25,11 @@
         <h4>RUT<span>*</span></h4>
         <div class="Rut">
           <input type="text"
+                 formControlName="rut"
+                 [class.is-invalid]="rutNoValido"
                  placeholder="12.345.567-8">
-          <small class="text-danger">
+          <small *ngIf="rutNoValido"
+                 class="text-danger">
             Ingrese un RUT válido
           </small>
         </div>
@@ -34,9 +42,12 @@
           <div class="Docnumber-img">
             <img src="../../../assets/img/numero-documento.png" alt="Número de Documento">
           </div>
-          <input type="number"
+          <input type="text"
+                 formControlName="docnumber"
+                 [class.is-invalid]="docnumberNoValido"
                  placeholder="Ingresa el tuyo">
-          <small class="text-danger">
+          <small *ngIf="docnumberNoValido"
+                 class="text-danger">
             Ingrese un número de documento
           </small>
         </div>
@@ -46,8 +57,11 @@
         <h4>Correo electónico<span>*</span></h4>
         <div class="Mail">
           <input type="email"
+                 formControlName="mail"
+                 [class.is-invalid]="mailNoValido"
                  placeholder="Escriba su correo">
-          <small class="text-danger">
+          <small *ngIf="mailNoValido"
+                 class="text-danger">
             Ingrese un correo válido
           </small>
         </div>
@@ -57,8 +71,11 @@
         <h4>Teléfono <span>*</span></h4>
         <div class="Phone">
           <input type="number"
+                 formControlName="phone"
+                 [class.is-invalid]="phoneNoValido"
                  placeholder="912345678">
-          <small class="text-danger">
+          <small *ngIf="phoneNoValido"
+                 class="text-danger">
             Ingrese un teléfono válido
           </small>
         </div>
@@ -68,8 +85,11 @@
         <h4>Teléfono alternativo</h4>
         <div class="Phone">
           <input type="number"
+                 formControlName="phone2"
+                 [class.is-invalid]="phone2NoValido"
                  placeholder="912345678">
-          <small class="text-danger">
+          <small *ngIf="phone2NoValido"
+                 class="text-danger">
             Ingrese un teléfono válido
           </small>
         </div>
@@ -83,8 +103,11 @@
             <h4>Tipo de vehículo (moto, auto, camion, etc)<span>*</span></h4>
             <div class="card-data">
               <input type="texto"
-                    placeholder="auto">
-              <small class="text-danger">
+                     formControlName="moviltype"
+                     [class.is-invalid]="moviltypeNoValido"
+                     placeholder="Tipo de vehículo">
+              <small *ngIf="moviltypeNoValido"
+                     class="text-danger">
                 Ingrese al menos 4 caracteres
               </small>
             </div>
@@ -93,8 +116,11 @@
           <div class="Vehiculo-item">
             <h4>Marca<span>*</span></h4>
             <div class="card-data">
-              <input type="texto">
-              <small class="text-danger">
+              <input type="texto"
+                     formControlName="marca"
+                     [class.is-invalid]="marcaNoValido"
+                     placeholder="Marca">
+              <small *ngIf="marcaNoValido" class="text-danger">
                 Máximo 12 caracteres
               </small>
             </div>
@@ -103,8 +129,12 @@
           <div class="Vehiculo-item">
             <h4>Modelo<span>*</span></h4>
             <div class="card-data">
-              <input type="texto">
-              <small class="text-danger">
+              <input type="texto"
+                     formControlName="modelo"
+                     [class.is-invalid]="modeloNoValido"
+                     placeholder="Modelo">
+              <small *ngIf="modeloNoValido"
+                     class="text-danger">
                 Máximo 12 caracteres
               </small>
             </div>
@@ -113,8 +143,12 @@
           <div class="Vehiculo-item">
             <h4>Color<span>*</span></h4>
             <div class="card-data">
-              <input type="texto">
-              <small class="text-danger">
+              <input type="texto"
+                     formControlName="movilcolor"
+                     [class.is-invalid]="movilcolorNoValido"
+                     placeholder="Color">
+              <small *ngIf="movilcolorNoValido"
+                     class="text-danger">
                 Máximo 10 caracteres
               </small>
             </div>
@@ -124,8 +158,11 @@
             <h4>Año del vehículo<span>*</span></h4>
             <div class="card-data">
               <input type="number"
+                     formControlName="movilano"
+                     [class.is-invalid]="movilcolorNoValido"
                      placeholder="2020">
-              <small class="text-danger">
+              <small *ngIf="movilanoNoValido"
+                     class="text-danger">
                 Ingrese un año válido
               </small>
             </div>
@@ -135,8 +172,11 @@
             <h4>Patente<span>*</span></h4>
             <div class="card-data">
               <input type="text"
+                     formControlName="patente"
+                     [class.is-invalid]="patenteNoValido"
                      placeholder="ABCD12">
-              <small class="text-danger">
+              <small *ngIf="patenteNoValido"
+                     class="text-danger">
                 Ingrese una patente válida
               </small>
             </div>
@@ -146,8 +186,11 @@
             <h4>Número de chasis</h4>
             <div class="card-data">
               <input type="text"
+                     formControlName="chasisnumber"
+                     [class.is-invalid]="chasisnumberNoValido"
                      placeholder="Ingresa el tuyo">
-              <small class="text-danger">
+              <small *ngIf="chasisnumberNoValido"
+                     class="text-danger">
                 Máximo 17 caracteres
               </small>
             </div>
@@ -157,29 +200,54 @@
             <h4>Número de motor</h4>
             <div class="card-data">
               <input type="text"
+                     formControlName="motornumber"
+                     [class.is-invalid]="motornumberNoValido"
                      placeholder="Ingresa el tuyo">
-              <small class="text-danger">
+              <small *ngIf="motornumberNoValido"
+                     class="text-danger">
                 Máximo 17 caracteres
               </small>
             </div>
           </div>
 
           <div class="Vehiculo-item">
-            <h4>Dirección del robo</h4>
+            <h4>Fecha del robo</h4>
             <div class="card-data">
-              <input type="text"
-                     placeholder="Comuna y esquina más cercana">
-              <small class="text-danger">
-                Máximo 50 caracteres
+              <input type="date"
+                     formControlName="fecharobo"
+                     [class.is-invalid]="fecharoboNoValido"
+                     placeholder="Fecha del robo"
+                     [min]="01-01-1960">
+              <small *ngIf="fecharoboNoValido"
+                     class="text-danger">
+                Ingresa una fecha
               </small>
             </div>
           </div>
 
           <div class="Vehiculo-item">
-            <h4>Más datos que pudieras añadir (te quedan caracteres)</h4>
+            <h4>Dirección del robo (comuna y esquina más cercana)</h4>
             <div class="card-data">
-              <textarea placeholder="Algún detalle que nos ayude a identificar tu vehículo"></textarea>
-              <small class="text-danger">
+              <input type="text"
+                     formControlName="direccion"
+                     [class.is-invalid]="direccionNoValido"
+                     placeholder="Comuna y esquina más cercana">
+              <small *ngIf="direccionNoValido"
+                     class="text-danger">
+                Máximo 100 caracteres
+              </small>
+            </div>
+          </div>
+
+          <div class="Vehiculo-item">
+            <h4>Más datos que pudieras añadir (te quedan {{contador}} caracteres)</h4>
+            <div class="card-data">
+              <textarea formControlName="moredata"
+                        placeholder="Algún detalle que nos ayude a identificar tu vehículo"
+                        (keydown)="getDisabledValue($event)"
+                        [class.is-invalid]="moredataNoValido"></textarea>
+              <small *ngIf="moredataNoValido"
+                     class="text-danger">
                 Has excedido el número de caracteres
               </small>
             </div>
@@ -195,6 +263,7 @@
 
           <div class="Donacion-item">
             <input type="radio"
+            formControlName="donacion"
                    value="si"
                    id="si">
             <label for="si">Si</label>
@@ -202,6 +271,7 @@
 
           <div class="Donacion-item">
             <input type="radio"
+            formControlName="donacion"
                    value="no"
                    id="no">
             <label for="no">No</label>
@@ -209,6 +279,7 @@
 
           <div class="Donacion-item">
             <input type="radio"
+            formControlName="donacion"
                    value="talvez"
                    id="talvez">
             <label for="talvez">Tal vez</label>
@@ -224,10 +295,12 @@
       </div>
 
       <div class="Formulario-btn">
-        <small class="text-center">
+        <small *ngIf="!form.valid"
+               class="text-center">
           El botón estará bloqueado hasta que llene el formulario correctamente
         </small>
-        <button type="submit">ENVIAR</button>
+        <button type="submit"
+                [disabled]="!form.valid">ENVIAR</button>
       </div>
 
     </form>
