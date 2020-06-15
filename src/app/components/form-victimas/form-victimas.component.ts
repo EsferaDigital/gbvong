@@ -17,6 +17,7 @@ export class FormVictimasComponent implements OnInit {
   public victima
   fechaActual = new Date()
   caracteresTextArea = 0
+  expandirDonacion: boolean
   contador = 500
 
   constructor(
@@ -40,6 +41,22 @@ export class FormVictimasComponent implements OnInit {
     modal.addEventListener('animationend', () => {
       this.cierraformvictimas.emit(false)
     })
+  }
+
+  showHideDonacion(v){
+    switch (v){
+      case 'si':
+        this.expandirDonacion = true
+        break
+      case 'no':
+        this.expandirDonacion = false
+        break
+      case 'talvez':
+        this.expandirDonacion = true
+        break
+      default:
+        this.expandirDonacion = false
+    }
   }
 
   get nombreNoValido(){
@@ -87,6 +104,12 @@ export class FormVictimasComponent implements OnInit {
   }
 
   get patenteNoValido(){
+    let patente = this.form.get('patente');
+    patente.valueChanges.subscribe(() => {
+      if (patente.value !== null){
+        patente.patchValue(patente.value.toUpperCase(), {emitEvent: false});
+      }
+    })
     return this.form.get('patente').invalid && this.form.get('patente').touched
   }
 

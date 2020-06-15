@@ -21,7 +21,7 @@ export class DatosService {
     private db: AngularFirestore,
     private http: HttpClient
     ) {
-      this.recuperados = this.db.collection(this.recuperadosRef).valueChanges();
+      this.recuperados = this.db.collection(this.recuperadosRef).valueChanges()
     }
 
   // Para obtener Regiones y comunas (datos en local)
@@ -44,6 +44,14 @@ export class DatosService {
   getRecuperados(){
     return this.recuperados;
   }
+
+  // Lógica de validacion de patente
+
+  // Crear en mi backend una función que retorne la patente de la base de datos (en json) o null si la patente consultada no está en la base de datos.
+
+  // Luego puedo consultar mi backend con httpclient desde acá
+
+  // Luego creo un servicio para las validaciones personalizadas, en otro archivo.
 
   // async getPatente(patenteForm: any){
   //   // Devuelve la patente consultada como string

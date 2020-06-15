@@ -136,7 +136,185 @@
       }
     }
     & .Vehiculo{
-      border: 2px solid red;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .5rem;
+      grid-template-areas: "titulo"
+                           "tipo"
+                           "marca"
+                           "modelo"
+                           "color"
+                           "ano"
+                           "patente"
+                           "chasis"
+                           "motor"
+                           "fecha"
+                           "direccion"
+                           "moredata";
+      @include mq(mdl){
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        grid-template-areas: "titulo titulo"
+                             "tipo marca"
+                             "modelo color"
+                             "ano patente"
+                             "chasis motor"
+                             "fecha direccion"
+                             "moredata moredata";
+      }
+      & h3{
+        grid-area: titulo;
+        text-align: center;
+        color: color(bg);
+        background-color: color(secondary);
+        padding: 1rem;
+        letter-spacing: 8px;
+        font-size: var(--font-size-titulo-3);
+        text-transform: uppercase;
+      }
+      &-tipo{
+        grid-area: tipo;
+        padding: .5rem;
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-marca{
+        grid-area: marca;
+        padding: .5rem;
+        @include mq(mdl){
+          padding-left: 0;
+        }
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-modelo{
+        grid-area: modelo;
+        padding: .5rem;
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-color{
+        grid-area: color;
+        padding: .5rem;
+        @include mq(mdl){
+          padding-left: 0;
+        }
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-ano{
+        grid-area: ano;
+        padding: .5rem;
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-patente{
+        grid-area: patente;
+        padding: .5rem;
+        @include mq(mdl){
+          padding-left: 0;
+        }
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-chasis{
+        grid-area: chasis;
+        padding: .5rem;
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-motor{
+        grid-area: motor;
+        padding: .5rem;
+        @include mq(mdl){
+          padding-left: 0;
+        }
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-fecha{
+        grid-area: fecha;
+        padding: .5rem;
+        // padding-right: 0;
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-direccion{
+        grid-area: direccion;
+        padding: .5rem;
+        @include mq(mdl){
+          padding-left: 0;
+        }
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+      }
+      &-moredata{
+        grid-area: moredata;
+        padding: .5rem;
+        & h4{
+          font-weight: 400;
+          & span{
+            margin-left: 10px;
+            color: color(success);
+          }
+        }
+        & textarea{
+          width: 100%;
+          height: 200px;
+        }
+      }
+    }
+    & .Donacion{
       & h3{
         text-align: center;
         color: color(bg);
@@ -147,18 +325,48 @@
         text-transform: uppercase;
       }
       &-item{
-        border: 2px solid blue;
-        & h4{
-          font-weight: 400;
-          & span{
-            margin-left: 10px;
-            color: color(success);
+        font-family: $fuente-secundaria;
+        // border: 1px solid blue;
+        & input[type="radio"]{
+          display: none;
+          &:checked + label:before{
+            background-color: color(success);
+          }
+        }
+        & .input-seleccionado:before{
+          background-color: color(success);
+        }
+        & .input-text{
+          margin-top: 5px;
+          width: 100%;
+        }
+        & label{
+          display: inline-block;
+          position: relative;
+          color: white;
+          padding: 5px 15px 5px 40px;
+          // border: 1px solid blue;
+          cursor: pointer;
+          &:before{
+            content: '';
+            width: 17px;
+            height: 17px;
+            display: inline-block;
+            background: none;
+            border: 3px solid color(success);
+            border-radius: 50%;
+            position: absolute;
+            left: 10px;
+            top: 5px;
+          }
+          &:hover{
+            background-color: color(fondo);
           }
         }
       }
-    }
-    & .Donacion{
-      border: 2px solid red;
+      &-monto{
+        padding: .5rem;
+      }
     }
   }
   &-btn{
@@ -183,6 +391,10 @@
       }
     }
   }
+}
+
+.nopadding{
+  padding: 0;
 }
 
 .link-alert{

@@ -95,17 +95,17 @@
         </div>
       </div>
 
-      <div class="Formulario-item">
+      <div class="Formulario-item nopadding">
         <div class="Vehiculo">
           <h3>Datos sobre el vehículo robado</h3>
 
-          <div class="Vehiculo-item">
-            <h4>Tipo de vehículo (moto, auto, camion, etc)<span>*</span></h4>
+          <div class="Vehiculo-tipo">
+            <h4>Tipo de vehículo<span>*</span></h4>
             <div class="card-data">
               <input type="texto"
                      formControlName="moviltype"
                      [class.is-invalid]="moviltypeNoValido"
-                     placeholder="Tipo de vehículo">
+                     placeholder="Moto, auto, camion, etc">
               <small *ngIf="moviltypeNoValido"
                      class="text-danger">
                 Ingrese al menos 4 caracteres
@@ -113,7 +113,7 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
+          <div class="Vehiculo-marca">
             <h4>Marca<span>*</span></h4>
             <div class="card-data">
               <input type="texto"
@@ -126,7 +126,7 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
+          <div class="Vehiculo-modelo">
             <h4>Modelo<span>*</span></h4>
             <div class="card-data">
               <input type="texto"
@@ -140,7 +140,7 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
+          <div class="Vehiculo-color">
             <h4>Color<span>*</span></h4>
             <div class="card-data">
               <input type="texto"
@@ -154,12 +154,12 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
+          <div class="Vehiculo-ano">
             <h4>Año del vehículo<span>*</span></h4>
             <div class="card-data">
               <input type="number"
                      formControlName="movilano"
-                     [class.is-invalid]="movilcolorNoValido"
+                     [class.is-invalid]="movilanoNoValido"
                      placeholder="2020">
               <small *ngIf="movilanoNoValido"
                      class="text-danger">
@@ -168,7 +168,7 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
+          <div class="Vehiculo-patente">
             <h4>Patente<span>*</span></h4>
             <div class="card-data">
               <input type="text"
@@ -182,7 +182,7 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
+          <div class="Vehiculo-chasis">
             <h4>Número de chasis</h4>
             <div class="card-data">
               <input type="text"
@@ -196,7 +196,7 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
+          <div class="Vehiculo-motor">
             <h4>Número de motor</h4>
             <div class="card-data">
               <input type="text"
@@ -210,8 +210,8 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
-            <h4>Fecha del robo</h4>
+          <div class="Vehiculo-fecha">
+            <h4>Fecha del robo<span>*</span></h4>
             <div class="card-data">
               <input type="date"
                      formControlName="fecharobo"
@@ -225,8 +225,8 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
-            <h4>Dirección del robo (comuna y esquina más cercana)</h4>
+          <div class="Vehiculo-direccion">
+            <h4>Dirección del robo</h4>
             <div class="card-data">
               <input type="text"
                      formControlName="direccion"
@@ -239,7 +239,7 @@
             </div>
           </div>
 
-          <div class="Vehiculo-item">
+          <div class="Vehiculo-moredata">
             <h4>Más datos que pudieras añadir (te quedan {{contador}} caracteres)</h4>
             <div class="card-data">
               <textarea formControlName="moredata"
@@ -256,7 +256,7 @@
         </div>
       </div>
 
-      <div class="Formulario-item">
+      <div class="Formulario-item nopadding">
         <div class="Donacion">
           <h3>Si encontramos tu vehículo</h3>
           <p>¿Estarías dispuesto a hacer una donación a nuestra ONG?</p>
@@ -265,6 +265,7 @@
             <input type="radio"
             formControlName="donacion"
                    value="si"
+                   (input)="showHideDonacion($event.target.value)"
                    id="si">
             <label for="si">Si</label>
           </div>
@@ -273,6 +274,7 @@
             <input type="radio"
             formControlName="donacion"
                    value="no"
+                   (input)="showHideDonacion($event.target.value)"
                    id="no">
             <label for="no">No</label>
           </div>
@@ -281,11 +283,13 @@
             <input type="radio"
             formControlName="donacion"
                    value="talvez"
+                   (input)="showHideDonacion($event.target.value)"
                    id="talvez">
             <label for="talvez">Tal vez</label>
           </div>
 
-          <div class="Donacion-item">
+          <div class="Donacion-monto slide-down"
+               *ngIf="expandirDonacion">
             <h4>¿Cuánto podrías donar?</h4>
             <input type="number"
                    placeholder="5000">

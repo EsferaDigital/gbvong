@@ -22,7 +22,8 @@ export class MainComponent implements OnInit{
   constructor(public datosService: DatosService) { }
 
   ngOnInit(){
-    this.datosService.getRecuperados().subscribe(resp => {
+    this.datosService.getRecuperados().subscribe(
+      resp => {
       this.recuperados = resp[0].total;
     })
   }
