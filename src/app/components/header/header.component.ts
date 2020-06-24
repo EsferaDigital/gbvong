@@ -43,7 +43,7 @@ export class HeaderComponent {
 
   // Navegación smooth scroll
 
-  // Nota (se puede mejorar creando un objeto con el menu para luego recorrerlo con un *nGfor en el html)
+  // Nota (se puede mejorar creando un objeto con el menu para luego recorrerlo con un *ngfor en el html)
 
   toGoSection(section: string, boton: any, panel: any){
     document.getElementById(section)

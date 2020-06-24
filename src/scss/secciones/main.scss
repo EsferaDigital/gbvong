@@ -201,19 +201,28 @@
         display: block;
         margin-bottom: 2rem;
       }
-      & form{
+      & .Paypal{
         // border: 1px solid red;
-        & > input{
-          border: none;
-          outline: none;
-          &:active{
-            transform: scale(.95);
+        & a{
+          display: block;
+          width: 100%;
+          margin: auto;
+          text-align: center;
+          & img{
+            display: block;
+            margin: auto;
+            border: none;
             outline: none;
+            // border: 2px solid brown;
+            &:active{
+              transform: scale(.95);
+            }
           }
         }
-        & > input:focus{
-          outline: none;
-        }
+
+        // & > input:focus{
+        //   outline: none;
+        // }
       }
     }
   }

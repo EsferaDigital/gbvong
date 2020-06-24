@@ -12,9 +12,10 @@ export class MainComponent implements OnInit{
   verhistoria: boolean
   // verormulario por defecto en true para mostrarlo mientras lo diseño
   // tslint:disable-next-line: no-inferrable-types
-  verformvictimas = true
+  verformvictimas: boolean
 
   verformmiembros: boolean
+  viejasVictimas: Array<any>
 
 
   // el valor de modal debe ser = al valor de lo que recibamos del modal historia o modal formulario
@@ -26,6 +27,16 @@ export class MainComponent implements OnInit{
       resp => {
       this.recuperados = resp[0].total;
     })
+
+    // this.datosService.getRegistros().subscribe(resp => {
+    //   console.log(resp)
+
+    //   this.viejasVictimas = resp.filter(item => {
+    //     return item.patente === ''
+    //   })
+
+    //   console.log(this.viejasVictimas)
+    // })
   }
 
   mostrarFormMiembros(){

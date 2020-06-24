@@ -11,17 +11,19 @@ import { VictimaModel } from '../models/victima.model';
   providedIn: 'root'
 })
 export class DatosService {
-  private coleccion = 'registros';
+  private registrosRef = 'registros';
   private recuperadosRef = 'recuperados'
   private miembrosRef = 'miembros'
   private victimasRef = 'victimas'
-  recuperados: Observable<any> ;
+  recuperados: Observable<any>
+  registros: Observable<any>
 
   constructor(
     private db: AngularFirestore,
     private http: HttpClient
     ) {
       this.recuperados = this.db.collection(this.recuperadosRef).valueChanges()
+      this.registros = this.db.collection(this.registrosRef).valueChanges()
     }
 
   // Para obtener Regiones y comunas (datos en local)
@@ -30,7 +32,7 @@ export class DatosService {
   }
 
   postRegistro(registro: RegistroModel): Promise<DocumentReference> {
-    return this.db.collection(this.coleccion).add(registro);
+    return this.db.collection(this.registrosRef).add(registro);
   }
 
   postMiembro(miembro: MiembroModel){
@@ -43,6 +45,10 @@ export class DatosService {
 
   getRecuperados(){
     return this.recuperados;
+  }
+
+  getRegistros(){
+    return this.registros
   }
 
   // Lógica de validacion de patente
