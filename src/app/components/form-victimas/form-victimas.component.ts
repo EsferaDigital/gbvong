@@ -60,7 +60,7 @@ export class FormVictimasComponent implements OnInit {
   }
 
   get nombreNoValido(){
-    return this.form.get('nombre').invalid && this.form.get('nombre').touched
+    return this.form.get('nombres').invalid && this.form.get('nombres').touched
   }
 
   get rutNoValido(){
@@ -150,7 +150,7 @@ export class FormVictimasComponent implements OnInit {
   crearFormulario(){
     this.form = this.fb.group({
       registrodate: [this.fechaActual],
-      nombre: ['', [
+      nombres: ['', [
         Validators.required,
         Validators.minLength(10)
       ]],
@@ -216,7 +216,7 @@ export class FormVictimasComponent implements OnInit {
     // Guardamos en el modelo victima, el objeto que enviaremos a la base de datos
     this.victima = this.form.value
 
-    console.log(this.victima)
+    // console.log(this.victima)
 
     Swal.fire({
       title: 'Espere',
@@ -230,9 +230,10 @@ export class FormVictimasComponent implements OnInit {
     this.datosService.postVictima(this.victima)
             .then(resp => {
               Swal.fire({
-                title: `Gracias ${this.victima.nombre}`,
+                title: `Gracias ${this.victima.nombres}`,
                 text: 'Los datos se enviaron correctamente',
                 icon: 'success',
+                footer: '<a class="link-alert" href="https://t.me/joinchat/KIvX9UbS2Ukmvh2MNBHy3w" target="_blank">Únete a nuestro grupo en Telegram</a>'
               })
               // Reseteamos el formulario
               this.form.reset()

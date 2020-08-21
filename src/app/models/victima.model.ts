@@ -1,7 +1,7 @@
 export class VictimaModel{
   constructor(
     public registrodate: Date,
-    public nombre: string,
+    public nombres: string,
     public rut: string,
     public docnumber: number,
     public mail: string,
