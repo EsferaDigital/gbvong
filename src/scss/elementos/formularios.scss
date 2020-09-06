@@ -1,3 +1,30 @@
+
+.Contenedor-formulario{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  max-width: $ancho-maximo;
+  @include section-img(color(primary), .7);
+  background-image: img("fondo-denuncia.jpg");
+  // border: 2px solid red;
+  padding-bottom: 0;
+}
+
+.login{
+  background-image: img("fondo-banner.jpg");
+}
+
+.Content-formulario{
+  position: relative;
+  z-index: capa(capa1);
+  & h2{
+    color: color(secondary);
+    text-align: center;
+  }
+}
+
 .Formulario{
   width: 100%;
   margin: auto;
@@ -391,6 +418,9 @@
       }
     }
   }
+  &-btn.btn-login{
+    padding-bottom: 1rem;
+  }
 }
 
 .nopadding{
@@ -407,53 +437,3 @@
   color: #C0362C;
 }
 
-// .Tipo{
-//   // border: 2px solid red;
-//   padding: 1rem 0;
-//   &-item{
-//     font-family: $fuente-secundaria;
-//     // border: 1px solid blue;
-//     & input[type="radio"]{
-//       display: none;
-//       &:checked + label:before{
-//         background-color: color(success);
-//       }
-//     }
-//     & .input-seleccionado:before{
-//       background-color: color(success);
-//     }
-//     & .input-text{
-//       margin-left: 15px;
-//       margin-top: 5px;
-//       width: calc(100% - 15px);
-//     }
-//     & label{
-//       display: inline-block;
-//       position: relative;
-//       color: white;
-//       padding: 5px 15px 5px 51px;
-//       // border: 1px solid blue;
-//       cursor: pointer;
-//       &:before{
-//         content: '';
-//         width: 17px;
-//         height: 17px;
-//         display: inline-block;
-//         background: none;
-//         border: 3px solid color(success);
-//         border-radius: 50%;
-//         position: absolute;
-//         left: 17px;
-//         top: 5px;
-//       }
-//       &:hover{
-//         background-color: color(fondo);
-//       }
-//     }
-//   }
-// }
-
-// .form-motivos{
-//   padding: 0;
-//   margin-top: 1.5rem;
-// }

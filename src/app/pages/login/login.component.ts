@@ -19,9 +19,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get emailNoValido(){
+    return this.loginForm.get('email').invalid && this.loginForm.get('email').touched
+  }
+
+  get passwordNoValido(){
+    return this.loginForm.get('password').invalid && this.loginForm.get('password').touched
+  }
+
   crearFormulario(){
     this.loginForm = this.fb.group({
-      nombreUsuario: ['', [
+      email: ['', [
         Validators.required
       ]],
       password: ['', [
