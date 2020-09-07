@@ -3,38 +3,23 @@
     <form class="Formulario" [formGroup]="registroForm" (ngSubmit)="onRegistro()">
       <h2>CREAR CUENTA</h2>
       <div class="Formulario-item">
-        <input type="email" name="email" placeholder="Email" formControlName="email">
         <small *ngIf="emailNoValido" class="text-danger">
           Escriba un correo válido
         </small>
+        <input type="email" name="email" placeholder="Email" formControlName="email">
       </div>
       <div class="Formulario-item">
-        <input type="text" name="nombre" placeholder="Nombre de usuario" formControlName="nombre">
         <small *ngIf="nombreNoValido" class="text-danger">
           Escriba un nombre válido
         </small>
+        <input type="text" name="nombre" placeholder="Nombre de usuario" formControlName="nombre">
       </div>
       <div class="Formulario-item">
-        <input type="password" name="pass" formControlName="password" placeholder="contraseña">
         <small *ngIf="passwordNoValido" class="text-danger">
           Escriba una contraseña válida
         </small>
+        <input type="password" formControlName="password" placeholder="Contraseña">
       </div>
-
-      <div class="Formulario-item">
-        <div>
-          <input type="checkbox" id="ckb1">
-          <label for="ckb1">
-            Recordar mi usuario
-          </label>
-        </div>
-        <div>
-          <a routerLink="/admin/login">
-            ¿Ya tienes cuenta? / Ingresar
-          </a>
-        </div>
-      </div>
-
       <div class="Formulario-btn btn-login">
         <small *ngIf="!registroForm.valid">
           El botón estará bloqueado hasta que llene el formulario correctamente
@@ -42,6 +27,13 @@
         <button type="submit" [disabled]="!registroForm.valid">
           Crear Cuenta
         </button>
+      </div>
+      <div class="Formulario-item">
+        <div>
+          <a routerLink="/admin/login">
+            ¿Ya tienes cuenta? / Ingresar
+          </a>
+        </div>
       </div>
     </form>
   </div>

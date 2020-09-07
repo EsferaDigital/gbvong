@@ -3,7 +3,7 @@
     <form class="Formulario" [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <h2>INICIAR SESIÓN</h2>
       <div class="Formulario-item">
-        <input type="email" placeholder="Email" formControlName="email">
+        <input type="email" placeholder="Email" [value]="usuario.email" formControlName="email">
         <small *ngIf="emailNoValido" class="text-danger">
           Escriba un correo válido
         </small>
@@ -14,19 +14,6 @@
           Escriba una contraseña válida
         </small>
       </div>
-      <div class="Formulario-item">
-        <div>
-          <input type="checkbox" id="ckb2">
-          <label for="ckb2">
-            Recordar mi usuario
-          </label>
-        </div>
-        <div>
-          <a routerLink="/admin/registro">
-            ¿Aún no tienes cuenta? / Crea una
-          </a>
-        </div>
-      </div>
       <div class="Formulario-btn btn-login">
         <small *ngIf="!loginForm.valid">
           El botón estará bloqueado hasta que llene el formulario correctamente
@@ -34,6 +21,18 @@
         <button type="submit" [disabled]="!loginForm.valid">
           Login
         </button>
+      </div>
+      <div class="Formulario-item">
+        <div>
+          <a routerLink="/admin/registro">
+            Registrarme
+          </a>
+        </div>
+        <div>
+          <a href="http://">
+            Recuperar contraseña
+          </a>
+        </div>
       </div>
     </form>
   </div>

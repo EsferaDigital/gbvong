@@ -31,6 +31,9 @@
   max-width: 700px;
   color: color(bg);
   background-color: color(primary);
+  @include mq(md){
+    min-width: 400px;
+  }
   & h2{
     text-align: center;
     color: color(bg);
@@ -434,6 +437,10 @@
 
 .is-invalid{
   border: 2px solid #C0362C;
+  color: #C0362C;
+}
+
+.text-danger{
   color: #C0362C;
 }
 

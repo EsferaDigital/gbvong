@@ -4,6 +4,7 @@ import { AdminComponent } from '../pages/admin/admin.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { RegistroComponent } from '../pages/registro/registro.component';
 import { BusquedasComponent } from '../pages/busquedas/busquedas.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const ADMIN_ROUTES: Routes = [
   {
@@ -12,7 +13,7 @@ const ADMIN_ROUTES: Routes = [
     children: [
       {path: 'login', component: LoginComponent},
       {path: 'registro', component: RegistroComponent},
-      {path: 'busquedas', component: BusquedasComponent},
+      {path: 'busquedas', component: BusquedasComponent, canActivate: [AuthGuard]},
       {path: '', pathMatch: 'full', redirectTo: 'login'}
     ]
   }

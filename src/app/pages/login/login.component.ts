@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { UsuarioModel } from '../../models/usuario.model';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'gb-login',
@@ -7,16 +11,19 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  usuario: UsuarioModel
   loginForm: FormGroup
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private router: Router
   ) {
     this.crearFormulario();
   }
 
   ngOnInit(): void {
+    this.usuario = new UsuarioModel()
   }
 
   get emailNoValido(){
@@ -38,6 +45,33 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onLogin(){}
+  onLogin(){
+    this.usuario = this.loginForm.value
+
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor...',
+    })
+    Swal.showLoading()
+
+    this.auth.login(this.usuario).subscribe((resp: any) => {
+      this.usuario.nombre = resp.displayName
+      Swal.close()
+      // console.log(resp.displayName)
+
+      localStorage.setItem('email', this.usuario.email)
+      localStorage.setItem('nombre', this.usuario.nombre)
+
+      this.router.navigateByUrl('/admin/busquedas')
+    }, (err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error de autenticación',
+        text: 'Correo o contraseña inválida',
+      })
+      // console.log(err.error.error.message)
+    })
+  }
 
 }

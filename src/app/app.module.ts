@@ -21,6 +21,7 @@ import { PagesModule } from './pages/pages.module';
 // Ambiente
 import { environment } from '../environments/environment';
 import { ComponentModule } from './components/component.module';
+import { AdminModule } from './admin/admin.module';
 
 
 
@@ -39,6 +40,7 @@ import { ComponentModule } from './components/component.module';
     PagesModule,
     ComponentModule,
     AppRoutesModule,
+    AdminModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
