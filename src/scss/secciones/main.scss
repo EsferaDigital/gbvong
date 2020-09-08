@@ -3,6 +3,11 @@
   max-width: $ancho-maximo;
 }
 
+.main-admin{
+  margin-top: $altura-header;
+  border: 2px solid red;
+}
+
 @mixin section-img($bg-color, $opc){
   height: auto;
   width: 100%;

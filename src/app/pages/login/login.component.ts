@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('email', this.usuario.email)
       localStorage.setItem('nombre', this.usuario.nombre)
 
-      this.router.navigateByUrl('/admin/busquedas')
+      this.router.navigateByUrl('/admin/miembros')
     }, (err) => {
       Swal.fire({
         icon: 'error',

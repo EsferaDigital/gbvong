@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
-import { AdminBusquedasComponent } from './admin-busquedas/admin-busquedas.component';
 import { AdminMiembrosComponent } from './admin-miembros/admin-miembros.component';
 import { AdminVictimasComponent } from './admin-victimas/admin-victimas.component';
 import { AdminRutComponent } from './admin-rut/admin-rut.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +13,6 @@ import { AdminRutComponent } from './admin-rut/admin-rut.component';
   declarations: [
     AdminHeaderComponent,
     AdminFooterComponent,
-    AdminBusquedasComponent,
     AdminMiembrosComponent,
     AdminVictimasComponent,
     AdminRutComponent
@@ -21,13 +20,13 @@ import { AdminRutComponent } from './admin-rut/admin-rut.component';
   exports: [
     AdminHeaderComponent,
     AdminFooterComponent,
-    AdminBusquedasComponent,
     AdminMiembrosComponent,
     AdminVictimasComponent,
     AdminRutComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class AdminModule { }

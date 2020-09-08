@@ -7,7 +7,6 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-import { BusquedasComponent } from './pages/busquedas/busquedas.component';
 
 // Rutas
 import { AppRoutesModule } from './app.routes.module';
@@ -33,7 +32,6 @@ import { AdminModule } from './admin/admin.module';
     AppComponent,
     LoginComponent,
     RegistroComponent,
-    BusquedasComponent
   ],
   imports: [
     BrowserModule,
