@@ -1,5 +1,55 @@
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod porro veniam eaque recusandae, dignissimos ipsam voluptates nesciunt aut iusto! Repudiandae odio laudantium tempore soluta nulla provident vitae dignissimos incidunt aliquid.</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod porro veniam eaque recusandae, dignissimos ipsam voluptates nesciunt aut iusto! Repudiandae odio laudantium tempore soluta nulla provident vitae dignissimos incidunt aliquid.</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod porro veniam eaque recusandae, dignissimos ipsam voluptates nesciunt aut iusto! Repudiandae odio laudantium tempore soluta nulla provident vitae dignissimos incidunt aliquid.</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod porro veniam eaque recusandae, dignissimos ipsam voluptates nesciunt aut iusto! Repudiandae odio laudantium tempore soluta nulla provident vitae dignissimos incidunt aliquid.</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod porro veniam eaque recusandae, dignissimos ipsam voluptates nesciunt aut iusto! Repudiandae odio laudantium tempore soluta nulla provident vitae dignissimos incidunt aliquid.</p>
+
+<section class="Admin-container">
+  <h1>Listado de miembros</h1>
+  <hr>
+  <button (click)="prevPage()"
+          [disabled]="disablePrev || !(paginationCount > 0)">
+    Anteriores
+  </button>
+  <button (click)="nextPage()"
+          [disabled]="disableNext">
+    Siguientes
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Rut</th>
+        <th>Teléfono</th>
+        <th>Fecha de Registro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tableData">
+        <td >
+          <a routerLink="/admin/miembro/nuevo">
+            {{item.nombre}}
+          </a>
+        </td>
+        <td>{{item.rut}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.registrodate.toDate() | date: 'mediumDate'}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <h4>No existen coincidencias</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+    <p>
+      Intente otra búsqueda
+    </p>
+  </div>
+
+  <div>
+    <h4>Cargando</h4>
+    <p>
+      <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p>
+      Espere por favor
+    </p>
+  </div>
+</section>

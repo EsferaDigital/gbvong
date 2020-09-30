@@ -6,6 +6,9 @@ import { AdminMiembrosComponent } from './admin-miembros/admin-miembros.componen
 import { AdminVictimasComponent } from './admin-victimas/admin-victimas.component';
 import { AdminRutComponent } from './admin-rut/admin-rut.component';
 import { RouterModule } from '@angular/router';
+import { AdminMiembroComponent } from './admin-miembro/admin-miembro.component';
+import { AdminVictimaComponent } from './admin-victima/admin-victima.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,18 +18,23 @@ import { RouterModule } from '@angular/router';
     AdminFooterComponent,
     AdminMiembrosComponent,
     AdminVictimasComponent,
-    AdminRutComponent
+    AdminRutComponent,
+    AdminMiembroComponent,
+    AdminVictimaComponent
   ],
   exports: [
     AdminHeaderComponent,
     AdminFooterComponent,
     AdminMiembrosComponent,
     AdminVictimasComponent,
-    AdminRutComponent
+    AdminRutComponent,
+    AdminMiembroComponent,
+    AdminVictimaComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
   ]
 })
 export class AdminModule { }

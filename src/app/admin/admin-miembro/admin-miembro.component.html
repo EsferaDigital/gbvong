@@ -1,0 +1,157 @@
+
+<section class="Admin-container">
+  <h1>Miembro: <small>Nombre del miembro</small></h1>
+  <hr>
+  <div>
+    <div>
+      <button routerLink="/admin/miembros">
+        <i class="fa fa-arrow-left"></i>
+        Volver
+      </button>
+    </div>
+  </div>
+
+  <div>
+
+    <form [formGroup]="form"
+          (ngSubmit)="guardar()"
+          class="Formulario">
+
+      <div class="Formulario-item">
+        <div>
+          <label >Firebase ID</label>
+          <input type="text"
+                 placeholder="Firebase ID"
+                 disabled="disabled">
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Nombre">
+          <label >Nombre</label>
+          <input type="text"
+                 placeholder="Nombre completo">
+          <small class="text-danger">
+            Ingrese al menos 10 caracteres
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Rut">
+          <label>RUT</label>
+          <input type="text"
+                  placeholder="RUT">
+          <small class="text-danger">
+            Ingrese un RUT válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Phone">
+          <label>Teléfono</label>
+          <input type="number"
+                  placeholder="12345678">
+          <small class="text-danger">
+            Ingrese un teléfono válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <div class="Mail">
+          <label>Correo</label>
+          <input type="email"
+                  placeholder="Escriba su correo">
+          <small class="text-danger">
+            Ingrese un correo válido
+          </small>
+        </div>
+      </div>
+
+      <div class="Formulario-item">
+        <h4>Dirección (Región, comuna, calle)</h4>
+        <div class="Direccion">
+
+          <div class="Region">
+            <select>
+              <option>
+              </option>
+            </select>
+            <small class="text-danger">
+              Seleccione una Region
+            </small>
+          </div>
+
+          <div class="Comuna slide-down">
+            <select>
+              <option>
+              </option>
+            </select>
+            <small class="text-danger">
+              Seleccione una Comuna
+            </small>
+          </div>
+
+          <div class="Calle">
+            <input type="text"
+                   placeholder="Calle #">
+            <small class="text-danger">
+              Escriba una dirección
+            </small>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="Formulario-item">
+        <div class="Tipo">
+          <div class="Tipo-item">
+            <input type="radio"
+                    id="civil"
+                    value="civil">
+            <label for="civil">Civil</label>
+          </div>
+
+          <div class="Tipo-item">
+            <input type="radio"
+                    id="ffaa"
+                    value="ffaa">
+            <label for="ffaa">Miembro de las FFAA</label>
+          </div>
+
+          <div class="Tipo-item">
+            <input type="radio"
+                    value="n">
+            <label for="n">Otra institución</label>
+          </div>
+
+          <div class="Tipo-item">
+            <input type="text"
+                    class="slide-down input-text"
+                    placeholder="Especifique cual">
+          </div>
+
+          <small class="text-danger">
+            Especifique cual
+          </small>
+
+        </div>
+      </div>
+
+      <div class="Formulario-btn">
+        <small>
+          Botón bloqueado hasta completar formulario
+        </small>
+        <button type="submit">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</section>

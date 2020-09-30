@@ -67,7 +67,7 @@ export class RegistroComponent implements OnInit {
 
     this.auth.nuevoUsuario(this.usuario).subscribe(resp => {
       Swal.close()
-      this.router.navigateByUrl('/admin/login')
+      this.router.navigateByUrl('/login')
       console.log(resp)
     }, (err) => {
       Swal.fire({
