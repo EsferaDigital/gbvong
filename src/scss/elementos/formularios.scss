@@ -6,7 +6,7 @@
   align-items: center;
   min-height: 100vh;
   max-width: $ancho-maximo;
-  @include section-img(color(primary), .7);
+  @include section-img(color(primary), .6);
   background-image: img("fondo-denuncia.jpg");
   // border: 2px solid red;
   padding-bottom: 0;
@@ -14,6 +14,10 @@
 
 .login{
   background-image: img("fondo-banner.jpg");
+}
+
+.reset-password{
+  background-image: img("fondo-hacemos.jpg");
 }
 
 .Content-formulario{
@@ -26,13 +30,18 @@
 }
 
 .Formulario{
-  width: 100%;
+  width: 300px;
   margin: auto;
   max-width: 700px;
   color: color(bg);
   background-color: color(primary);
+  padding-bottom: 1rem;
+  box-shadow: $sombra-blanca;
   @include mq(md){
     min-width: 400px;
+  }
+  @include mq(mdl){
+    min-width: 500px;
   }
   & h2{
     text-align: center;
@@ -64,6 +73,7 @@
     font-family: $fuente-secundaria;
     background-color: color(bg-item);
     outline-style: none;
+    border: 2px solid #ffff;
     &:focus{
       border: 2px solid #1F5764;
     }
@@ -123,6 +133,12 @@
             background-color: color(fondo);
           }
         }
+      }
+    }
+    &-links > a{
+      color: #ffff;
+      &:hover{
+        color: color(tacha);
       }
     }
     // & .Nombre{
@@ -441,6 +457,7 @@
 }
 
 .text-danger{
+  padding: .5rem;
   color: #C0362C;
 }
 

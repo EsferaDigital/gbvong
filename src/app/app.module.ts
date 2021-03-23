@@ -14,6 +14,7 @@ import { AppRoutesModule } from './app.routes.module';
 import {HttpClientModule} from '@angular/common/http';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 import { PagesModule } from './pages/pages.module';
 import { ComponentModule } from './components/component.module';
 import { AdminModule } from './admin/admin.module';
@@ -35,7 +36,8 @@ import { environment } from '../environments/environment';
     AdminModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

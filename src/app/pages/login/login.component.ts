@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
   crearFormulario(){
     this.loginForm = this.fb.group({
       email: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
       ]],
       password: ['', [
         Validators.required
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
 
       this.router.navigateByUrl('/admin/miembros')
     }, (err) => {
+      this.loginForm.reset();
       Swal.fire({
         icon: 'error',
         title: 'Error de autenticación',

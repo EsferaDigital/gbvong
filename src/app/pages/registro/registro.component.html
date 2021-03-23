@@ -6,19 +6,27 @@
         <small *ngIf="emailNoValido" class="text-danger">
           Escriba un correo válido
         </small>
-        <input type="email" name="email" placeholder="Email" formControlName="email">
+        <input type="email"
+               name="email"
+               placeholder="Email"
+               formControlName="email">
       </div>
       <div class="Formulario-item">
         <small *ngIf="nombreNoValido" class="text-danger">
           Escriba un nombre válido
         </small>
-        <input type="text" name="nombre" placeholder="Nombre de usuario" formControlName="nombre">
+        <input type="text"
+               name="nombre"
+               placeholder="Nombre de usuario"
+               formControlName="nombre">
       </div>
       <div class="Formulario-item">
         <small *ngIf="passwordNoValido" class="text-danger">
           Escriba una contraseña válida
         </small>
-        <input type="password" formControlName="password" placeholder="Contraseña">
+        <input type="password"
+               placeholder="Contraseña"
+               formControlName="password">
       </div>
       <div class="Formulario-btn btn-login">
         <small *ngIf="!registroForm.valid">
@@ -29,7 +37,7 @@
         </button>
       </div>
       <div class="Formulario-item">
-        <div>
+        <div class="Formulario-item-links">
           <a routerLink="/login">
             ¿Ya tienes cuenta? / Ingresar
           </a>

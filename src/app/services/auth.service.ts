@@ -1,19 +1,32 @@
 import { Injectable } from '@angular/core';
+import {auth} from 'firebase/app';
+import {User} from 'firebase';
+import {AngularFireAuth} from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioModel } from '../models/usuario.model';
-import {map} from 'rxjs/operators'
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'https://identitytoolkit.googleapis.com/v1/accounts'
-  private apikey = 'AIzaSyCAAlbOd6eZcF19jQl_-ds9Kwa9rUF2PaU'
-  userToken: string
+  private url = 'https://identitytoolkit.googleapis.com/v1/accounts';
+  private apikey = 'AIzaSyCAAlbOd6eZcF19jQl_-ds9Kwa9rUF2PaU';
+  userToken: string;
+  public user: User;
 
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    public afAuth: AngularFireAuth) {
     this.leerToken()
+  }
+
+  async resetPassword(email: string): Promise<void>{
+    try{
+      return this.afAuth.sendPasswordResetEmail(email);
+    }
+    catch (error){console.log(error)}
   }
 
   logout(){

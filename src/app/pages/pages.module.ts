@@ -6,16 +6,19 @@ import { AdminModule } from '../admin/admin.module';
 import { ComponentModule } from '../components/component.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
   declarations: [
     InicioComponent,
     AdminComponent,
+    ForgotPasswordComponent
   ],
   exports: [
     InicioComponent,
     AdminComponent,
+    ForgotPasswordComponent,
     ReactiveFormsModule
   ],
   imports: [

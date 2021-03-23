@@ -3,33 +3,38 @@
     <form class="Formulario" [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <h2>INICIAR SESIÓN</h2>
       <div class="Formulario-item">
-        <input type="email" placeholder="Email" [value]="usuario.email" formControlName="email">
+        <input type="email"
+               placeholder="Email"
+               [value]="usuario.email"
+               formControlName="email">
         <small *ngIf="emailNoValido" class="text-danger">
           Escriba un correo válido
         </small>
       </div>
       <div class="Formulario-item">
-        <input type="password" formControlName="password">
+        <input type="password"
+               formControlName="password"
+               placeholder="Contraseña">
         <small *ngIf="passwordNoValido" class="text-danger">
           Escriba una contraseña válida
         </small>
       </div>
       <div class="Formulario-btn btn-login">
         <small *ngIf="!loginForm.valid">
-          Botón bloqueado hasta completar el formulario
+          Botón bloqueado hasta completar formulario
         </small>
         <button type="submit" [disabled]="!loginForm.valid">
           Login
         </button>
       </div>
       <div class="Formulario-item">
-        <div>
+        <div class="Formulario-item-links">
           <a routerLink="/registro">
             Registrarme
           </a>
         </div>
-        <div>
-          <a href="http://">
+        <div class="Formulario-item-links">
+          <a routerLink="/recuperar-contrasena">
             Recuperar contraseña
           </a>
         </div>

@@ -1,6 +1,6 @@
 // Variables para maquetación
 
-$ancho-maximo: 1400px; //de todo el sitio
+$ancho-maximo: 1920px; //de todo el sitio
 $espacio-entre-letras: 1px;
 $altura-header: 5rem; //revisar
 
@@ -82,3 +82,5 @@ $altura-header: 5rem; //revisar
     --padding-box-creditos: .5rem 0;
   }
 }
+
+$sombra-blanca: rgba(255, 255, 255, 0.1) 0px 8px 24px, rgba(255, 255, 255, 0.1) 0px 16px 56px, rgba(255, 255, 255, 0.1) 0px 24px 80px;

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "crud-gbvong": {
+      "hosting": {
+        "gbvong": [
+          "crud-gbvong"
+        ]
+      }
+    }
+  }
+}
